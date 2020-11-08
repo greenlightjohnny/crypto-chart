@@ -1,6 +1,40 @@
 .main {
-  max-width: 1200px;
+  max-width: 700px;
   margin: 0 auto;
+  margin-top: 3rem;
   text-align: left;
   border: 1px solid blue;
+  min-height: 400px;
+}
+
+.item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.item > div {
+  min-width: 80px;
+}
+
+.topFlex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.topFlex > div {
+  min-width: 80px;
+  p {
+    font-weight: bold;
+  }
+}
+
+.loader {
+  //width: 100%;
+  width: fit-content;
+
+  margin: 0 auto;
+  margin-top: 3rem;
 }

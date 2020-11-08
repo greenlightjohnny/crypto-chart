@@ -5,7 +5,7 @@ export const CurrencyContext = createContext()
 export const CurrencyContextProvider = (props) => {
   const [coinList, setCoinList] = useState([
     "bitcoin",
-    "dogecoin",
+    "hex",
     "ethereum",
     "litecoin",
   ])
