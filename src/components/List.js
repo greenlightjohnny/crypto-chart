@@ -2,13 +2,12 @@ import React, { useEffect, useState, useContext } from "react"
 import ListMap from "./ListMap"
 import geckoapi from "../apis/gecko"
 import { CurrencyContext } from "../context/currencyContext"
-import Loader from "react-loader-spinner"
 
 function List() {
   const [coins, setCoins] = useState()
-  const { coinList } = useContext(CurrencyContext)
+  const { coinList, deleteCoin } = useContext(CurrencyContext)
   const [isLoading, setIsLoading] = useState(false)
-  console.log(coinList)
+  //console.log(coinList)
   useEffect(() => {
     setIsLoading(true)
     const fetchData = async () => {
@@ -31,10 +30,10 @@ function List() {
       }
     }
     fetchData()
-  }, [])
+  }, [coinList])
   return (
     <div>
-      <ListMap coins={coins} isLoading={isLoading} />
+      <ListMap coins={coins} deleteCoin={deleteCoin} isLoading={isLoading} />
     </div>
   )
 }

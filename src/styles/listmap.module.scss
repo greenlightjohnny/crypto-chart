@@ -11,17 +11,47 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 20px;
+  //margin-top: 15px;
+  transition: all ease-in-out 0.4s;
+}
+.item:nth-child(odd) {
+  background-color: beige;
+}
+
+.item:nth-child(even) {
+  background-color: rgb(145, 217, 241);
+}
+.item:hover {
+  background-color: lighten($color: #c56060, $amount: 30);
+  transition: ease-in-out all 0.4s;
+  cursor: pointer;
 }
 
 .item > div {
   min-width: 80px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  img {
+    max-height: 14px;
+    display: inline-block;
+  }
+  &:first-child {
+    h4 {
+      display: inline-block;
+    }
+  }
+
+  &:nth-child(2) {
+    text-align: left;
+  }
 }
 
 .topFlex {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding-bottom: 5px;
 }
 
 .topFlex > div {
@@ -37,4 +67,29 @@
 
   margin: 0 auto;
   margin-top: 3rem;
+}
+
+.delete {
+  width: fit-content;
+  border: none;
+  background-color: transparent;
+  padding-right: 8px;
+
+  color: rgb(211, 90, 90);
+
+  .deleteIcon {
+    fill: rgb(211, 90, 90);
+    height: 14px;
+    width: auto;
+    transition: all ease-in-out 0.3s;
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .deleteIcon {
+      color: red;
+      transform: scale(1.15);
+    }
+  }
 }

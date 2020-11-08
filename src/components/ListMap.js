@@ -1,7 +1,8 @@
 import React from "react"
 import Styles from "../styles/listmap.module.scss"
 import Loader from "react-loader-spinner"
-
+import { Link } from "react-router-dom"
+import { ReactComponent as Minus } from "../images/minus.svg"
 export const Loading = () => {
   return (
     <Loader
@@ -16,8 +17,8 @@ export const Loading = () => {
 
 export const sortCoins = () => {}
 
-function ListMap({ coins, isLoading }) {
-  console.log(isLoading)
+function ListMap({ coins, isLoading, deleteCoin }) {
+  //console.log(isLoading)
   return (
     <div className={Styles.main}>
       <div className={Styles.topFlex}>
@@ -58,7 +59,16 @@ function ListMap({ coins, isLoading }) {
                 return (
                   <div className={Styles.item} key={coin.id}>
                     <div className={Styles.flex}>
-                      <h4>{coin.name}</h4>
+                      <button
+                        onClick={() => {
+                          deleteCoin(coin.id)
+                        }}
+                        className={Styles.delete}
+                      >
+                        <Minus className={Styles.deleteIcon} />
+                      </button>
+                      <h4>{coin.name}</h4>{" "}
+                      <img src={coin.image} alt={coin.name} />
                     </div>
                     <div className={Styles.flex}>${coin.current_price}</div>
                     <div className={Styles.flex}>

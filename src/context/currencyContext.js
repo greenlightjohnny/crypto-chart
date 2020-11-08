@@ -9,9 +9,19 @@ export const CurrencyContextProvider = (props) => {
     "ethereum",
     "litecoin",
   ])
+  const deleteCoin = (coin) => {
+    console.log(coin)
+    const newList = [...coinList]
+    console.log(newList)
+    let filterMe = newList.filter((item) => {
+      return item !== coin
+    })
+    console.log(filterMe)
+    setCoinList(filterMe)
+  }
 
   return (
-    <CurrencyContext.Provider value={{ coinList }}>
+    <CurrencyContext.Provider value={{ coinList, deleteCoin }}>
       {props.children}
     </CurrencyContext.Provider>
   )
