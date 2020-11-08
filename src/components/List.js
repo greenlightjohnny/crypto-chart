@@ -1,21 +1,39 @@
-import React, { useEffect, useState } from "react"
-import axios from "axios"
+import React, { useEffect, useState, useContext } from "react"
+import ListMap from "./ListMap"
+import geckoapi from "../apis/gecko"
+import { CurrencyContext } from "../context/currencyContext"
 
 function List() {
   const [coins, setCoins] = useState()
-
+  const { coinList } = useContext(CurrencyContext)
+  const [isLoading, setIsLoading] = useState(false)
+  console.log(coinList)
   useEffect(() => {
+    setIsLoading(true)
     const fetchData = async () => {
       try {
-        const reply = await axios.get(
-          "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin%2C%20monero&order=market_cap_desc&per_page=100&page=1&sparkline=false"
-        )
+        const reply = await geckoapi.get("/coins/markets", {
+          params: {
+            vs_currency: "usd",
+            ids: coinList.join(","),
+          },
+        })
+
         console.log(reply.data)
-      } catch (err) {}
+        setCoins(reply.data)
+        setIsLoading(false)
+      } catch (err) {
+        console.log(err)
+        setIsLoading(false)
+      }
     }
     fetchData()
   }, [])
-  return <div></div>
+  return (
+    <div>
+      {coins ? <ListMap coins={coins} /> : <p>Select a coin to check price </p>}
+    </div>
+  )
 }
 
 export default List
