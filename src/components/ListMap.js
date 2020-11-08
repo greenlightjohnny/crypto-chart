@@ -57,8 +57,8 @@ function ListMap({ coins, isLoading, deleteCoin }) {
                   colors = { color: "red" }
                 }
                 return (
-                  <div className={Styles.item} key={coin.id}>
-                    <Link to="/stats">
+                  <Link to="/stats" key={coin.id}>
+                    <div className={Styles.item}>
                       <div className={Styles.flex}>
                         <button
                           onClick={(e) => {
@@ -76,8 +76,8 @@ function ListMap({ coins, isLoading, deleteCoin }) {
                       <div className={Styles.flex}>
                         <span style={colors}> {shortenNumber}%</span>
                       </div>
-                    </Link>
-                  </div>
+                    </div>
+                  </Link>
                 )
               })}
             </>
