@@ -7,7 +7,7 @@ function List() {
   const [coins, setCoins] = useState()
   const { coinList, deleteCoin } = useContext(CurrencyContext)
   const [isLoading, setIsLoading] = useState(false)
-  //console.log(coinList)
+  console.log(coinList)
   useEffect(() => {
     setIsLoading(true)
     const fetchData = async () => {

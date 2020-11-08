@@ -9,6 +9,9 @@ export const CurrencyContextProvider = (props) => {
     "ethereum",
     "litecoin",
   ])
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [user, setUser] = useState(null)
+
   const deleteCoin = (coin) => {
     console.log(coin)
     const newList = [...coinList]
@@ -21,7 +24,9 @@ export const CurrencyContextProvider = (props) => {
   }
 
   return (
-    <CurrencyContext.Provider value={{ coinList, deleteCoin }}>
+    <CurrencyContext.Provider
+      value={{ coinList, deleteCoin, isAuthenticated, setIsAuthenticated }}
+    >
       {props.children}
     </CurrencyContext.Provider>
   )

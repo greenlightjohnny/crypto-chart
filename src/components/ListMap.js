@@ -58,22 +58,25 @@ function ListMap({ coins, isLoading, deleteCoin }) {
                 }
                 return (
                   <div className={Styles.item} key={coin.id}>
-                    <div className={Styles.flex}>
-                      <button
-                        onClick={() => {
-                          deleteCoin(coin.id)
-                        }}
-                        className={Styles.delete}
-                      >
-                        <Minus className={Styles.deleteIcon} />
-                      </button>
-                      <h4>{coin.name}</h4>{" "}
-                      <img src={coin.image} alt={coin.name} />
-                    </div>
-                    <div className={Styles.flex}>${coin.current_price}</div>
-                    <div className={Styles.flex}>
-                      <span style={colors}> {shortenNumber}%</span>
-                    </div>
+                    <Link to="/stats">
+                      <div className={Styles.flex}>
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault()
+                            deleteCoin(coin.id)
+                          }}
+                          className={Styles.delete}
+                        >
+                          <Minus className={Styles.deleteIcon} />
+                        </button>
+                        <h4>{coin.name}</h4>{" "}
+                        <img src={coin.image} alt={coin.name} />
+                      </div>
+                      <div className={Styles.flex}>${coin.current_price}</div>
+                      <div className={Styles.flex}>
+                        <span style={colors}> {shortenNumber}%</span>
+                      </div>
+                    </Link>
                   </div>
                 )
               })}

@@ -1,12 +1,18 @@
 .main {
   width: 100%;
-  background-color: blue;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  z-index: 2;
 }
 
 .container {
   max-width: 1300px;
   margin: 0 auto;
   padding: 0 3vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logocon {
@@ -17,4 +23,30 @@
     max-height: 50px;
     object-fit: contain;
   }
+}
+
+button,
+input[type="submit"] {
+  border: none;
+  background: none;
+  color: unset;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #2199df;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  &:focus,
+  &:active {
+    outline: none;
+    //border: 2px solid #bf1650;
+  }
+}
+a {
+  color: #2199df;
+  text-decoration: none;
+  text-transform: uppercase;
 }
