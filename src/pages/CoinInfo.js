@@ -11,19 +11,28 @@ function CoinInfo() {
   const [time, setTime] = useState("")
   const [isLoading, setIsLoading] = useState(false)
 
-  const howMany = time | "3"
+  const chartFormat = (data) => {
+    return data.map((i) => {
+      return {
+        t: i[0],
+        y: i[1].toFixed(2),
+      }
+    })
+  }
+
+  const howMany = time | 9
   console.log(howMany)
   useEffect(() => {
     setIsLoading(true)
     const fetchData = async () => {
       let days
-      let main
+      let mainInfo
       try {
-        ;[days, main] = await Promise.all([
+        ;[days, mainInfo] = await Promise.all([
           gecko.get(`/coins/${name}/market_chart`, {
             params: {
               vs_currency: "usd",
-              days: { howMany },
+              days: howMany,
             },
           }),
           gecko.get(`/coins/markets/`, {
@@ -33,15 +42,16 @@ function CoinInfo() {
             },
           }),
         ])
-        console.log(days, main)
+        console.log(mainInfo)
         setCoinData({
-          days: days.data.prices,
-          main: main.data[0],
+          days: chartFormat(days.data.prices),
+          mainInfo: mainInfo.data[0],
         })
-        console.log(coinData)
+        //console.log(coinData)
         setIsLoading(false)
+        console.log(coinData.main)
       } catch (error) {
-        console.log(error)
+        //console.log(error)
         setIsLoading(false)
       }
     }
@@ -59,7 +69,7 @@ function CoinInfo() {
       return (
         <div>
           <div className={Styles.container}>
-            <Chart />
+            <Chart chartData={coinData} />
             <Details />
           </div>
         </div>
