@@ -57,7 +57,7 @@ function ListMap({ coins, isLoading, deleteCoin }) {
                   colors = { color: "red" }
                 }
                 return (
-                  <Link to="/stats" key={coin.id}>
+                  <Link to={`/coins/${coin.id}`} key={coin.id}>
                     <div className={Styles.item}>
                       <div className={Styles.flex}>
                         <button

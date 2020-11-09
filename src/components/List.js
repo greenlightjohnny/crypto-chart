@@ -29,7 +29,11 @@ function List() {
         //setIsLoading(false)
       }
     }
-    fetchData()
+    if (coinList.length > 0) {
+      fetchData()
+    } else {
+      setCoins([])
+    }
   }, [coinList])
   return (
     <div>

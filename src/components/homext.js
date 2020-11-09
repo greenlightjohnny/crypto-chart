@@ -29,7 +29,10 @@ const Homext = () => {
           <div className={Styles.gridItem}>
             <div className={Styles.gridItemText}>
               <h4>Free!</h4>
-              <p>Because no one would pay for this</p>
+              <p>
+                Because no one would pay for this, especially when there are
+                already 20 sites doing the exact same thing.
+              </p>
             </div>
             <div className={Styles.gridItemIcon}></div>
           </div>
