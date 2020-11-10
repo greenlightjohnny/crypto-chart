@@ -8,7 +8,7 @@ import gecko from "../apis/gecko"
 function CoinInfo() {
   const { name } = useParams()
   const [coinData, setCoinData] = useState({})
-  const [time, setTime] = useState("")
+  const [time, setTime] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
 
   const chartFormat = (data) => {
@@ -20,8 +20,13 @@ function CoinInfo() {
     })
   }
 
+  const handleTime = (e) => {
+    console.log(e)
+
+    setTime(e)
+  }
   const howMany = time | 9
-  console.log(howMany)
+  console.log(time)
   useEffect(() => {
     setIsLoading(true)
     const fetchData = async () => {
@@ -32,7 +37,7 @@ function CoinInfo() {
           gecko.get(`/coins/${name}/market_chart`, {
             params: {
               vs_currency: "usd",
-              days: howMany,
+              days: time,
             },
           }),
           gecko.get(`/coins/markets/`, {
@@ -56,7 +61,7 @@ function CoinInfo() {
       }
     }
     fetchData()
-  }, [])
+  }, [time])
 
   const renderData = () => {
     if (isLoading) {
@@ -69,7 +74,7 @@ function CoinInfo() {
       return (
         <div>
           <div className={Styles.container}>
-            <Chart chartData={coinData} />
+            <Chart chartData={coinData} time={time} handleTime={handleTime} />
             <Details />
           </div>
         </div>

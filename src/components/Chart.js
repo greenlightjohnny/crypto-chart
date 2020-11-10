@@ -2,10 +2,18 @@ import React, { useRef, useEffect, useState } from "react"
 import ChartJS from "chart.js"
 import Styles from "../styles/chart.module.scss"
 import { historyOptions } from "../chartconfig/chartconfig"
-const Chart = ({ chartData }) => {
+const Chart = ({ chartData, handleTime, time }) => {
   const chartRef = useRef()
   const { days, mainInfo } = chartData
   const { daysLength, setDaysLength } = useState("24")
+  const [buttonList, setButtonList] = useState([
+    { time: 1, text: "1D" },
+    { time: 7, text: "1W" },
+    { time: 30, text: "1M" },
+    { time: 180, text: "6M" },
+    { time: 365, text: "1Y" },
+  ])
+
   //console.log(main.name)
   //let coinName = main.name || "coin"
   //console.log(coinName)
@@ -52,7 +60,7 @@ const Chart = ({ chartData }) => {
       } else {
         colors = { color: "red" }
       }
-      ;``
+
       return (
         <>
           <p className={Styles.price}>
@@ -66,8 +74,26 @@ const Chart = ({ chartData }) => {
   return (
     <div className={Styles.wrapper}>
       <div>{renderPrice()}</div>
-      <div>
-        <canvas ref={chartRef} id="myChart" width={250} height={250} />
+      <div className={Styles.chartSize}>
+        <canvas ref={chartRef} id="myChart" height={400} width={600} />
+      </div>
+      <div className={Styles.setDays}>
+        {buttonList.map((i) => {
+          return (
+            <button
+              key={i.time}
+              className={time === i.time ? Styles.active : ""}
+              onClick={() => handleTime(i.time)}
+            >
+              {i.text}
+            </button>
+          )
+        })}
+        {/* <button onClick={() => handleTime(1)}>24H</button>
+        <button onClick={() => handleTime(7)}>1W</button>
+        <button onClick={() => handleTime(30)}>1M</button>
+        <button onClick={() => handleTime(180)}>6M</button>
+        <button onClick={() => handleTime(365)}>1Y</button> */}
       </div>
     </div>
   )
