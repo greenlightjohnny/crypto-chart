@@ -7,31 +7,53 @@
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   border-radius: 12px;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+}
+
+.header {
+  display: flex;
+  //justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex: 1;
+  h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: inline-block;
+  }
+
+  img {
+    width: 50px;
+    height: auto;
+  }
 }
 .flex {
   max-width: 1300px;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  //justify-content: space-between;
+  justify-content: left;
   flex-wrap: wrap;
   margin: 0 auto;
-  padding-left: 3vw;
-  padding-right: 3vw;
-  flex: 1;
 
   .flexItem {
-    border: 1px solid blue;
+    //border: 1px solid blue;
     flex: 1;
     display: flex;
+    margin-bottom: 12px;
     flex-direction: column;
+    min-width: 120px;
+    max-width: fit-content;
 
     span {
-      padding-top: 7px;
+      padding-top: 0px;
+      font-size: 0.9rem;
     }
 
     .market {
-      border: 1px solid red;
+      //border: 1px solid red;
+      color: rgb(105, 101, 101);
+      font-size: 0.9rem;
     }
   }
 }

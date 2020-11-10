@@ -75,19 +75,25 @@ const Chart = ({ chartData, handleTime, time, text }) => {
 
       return (
         <>
-          <p className={Styles.price}>
-            Current Price: ${mainInfo.current_price}
-          </p>
-          <p style={colors}>
-            {time} Day Change: ${mainInfo.price_change_24h}
-          </p>
+          <div className={Styles.flexTitle}>
+            <img src={mainInfo.image} alt={mainInfo.name} />
+            <h4>{mainInfo.name}</h4>
+          </div>
+          <div>
+            <p className={Styles.price}>
+              Current Price: ${mainInfo.current_price}
+            </p>
+            <p style={colors}>
+              {time} Day Change: ${mainInfo.price_change_24h}
+            </p>
+          </div>
         </>
       )
     }
   }
   return (
     <div className={Styles.wrapper}>
-      <div>{renderPrice()}</div>
+      <div className={Styles.topFlex}>{renderPrice()}</div>
       <div className={Styles.chartSize}>
         <canvas ref={chartRef} id="myChart" height={400} width={600} />
       </div>

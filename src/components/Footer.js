@@ -8,22 +8,22 @@ function Footer() {
       <div className={Styles.flex}>
         <div className={Styles.flexItem}>Logo</div>
         <div className={Styles.flexItem}>
-          <p>Link</p>
-          <Link to="/">Test Link</Link>
-          <Link to="/">Test Link</Link>
-          <Link to="/">Test Link</Link>
+          <p>Main</p>
+          <Link to="/">Home</Link>
+          <Link to="/">About</Link>
+          <Link to="/">Data</Link>
         </div>
         <div className={Styles.flexItem}>
-          <p>Link</p>
-          <Link to="/">Test Link</Link>
-          <Link to="/">Test Link</Link>
-          <Link to="/">Test Link</Link>
+          <p>User</p>
+          <Link to="/">Login</Link>
+          <Link to="/">Register</Link>
+          <Link to="/">Profile</Link>
         </div>
         <div className={Styles.flexItem}>
-          <p>Link</p>
-          <Link to="/">Test Link</Link>
-          <Link to="/">Test Link</Link>
-          <Link to="/">Test Link</Link>
+          <p>About</p>
+          <Link to="/">Contact</Link>
+          <Link to="/">Privacy</Link>
+          <Link to="/">Data</Link>
         </div>
       </div>
     </footer>
