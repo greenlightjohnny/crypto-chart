@@ -1,6 +1,6 @@
 import React from "react"
-
-function Info() {
+import Styles from "../styles/info.module.scss"
+const Info = () => {
   return <div></div>
 }
 

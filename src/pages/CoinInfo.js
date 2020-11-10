@@ -9,6 +9,7 @@ function CoinInfo() {
   const { name } = useParams()
   const [coinData, setCoinData] = useState({})
   const [time, setTime] = useState(1)
+  const [text, setText] = useState("1D")
   const [isLoading, setIsLoading] = useState(false)
 
   const chartFormat = (data) => {
@@ -21,12 +22,13 @@ function CoinInfo() {
   }
 
   const handleTime = (e) => {
-    console.log(e)
-
-    setTime(e)
+    //console.log(e)
+    setTime(e.time)
+    setText(e.text)
   }
+
   const howMany = time | 9
-  console.log(time)
+  //console.log(time)
   useEffect(() => {
     setIsLoading(true)
     const fetchData = async () => {
@@ -54,7 +56,7 @@ function CoinInfo() {
         })
         //console.log(coinData)
         setIsLoading(false)
-        console.log(coinData.main)
+        //console.log(coinData.main)
       } catch (error) {
         //console.log(error)
         setIsLoading(false)
@@ -72,10 +74,15 @@ function CoinInfo() {
       )
     } else {
       return (
-        <div>
+        <div className={Styles.main}>
           <div className={Styles.container}>
-            <Chart chartData={coinData} time={time} handleTime={handleTime} />
-            <Details />
+            <Chart
+              chartData={coinData}
+              time={time}
+              text={text}
+              handleTime={handleTime}
+            />
+            <Details data={coinData} />
           </div>
         </div>
       )
