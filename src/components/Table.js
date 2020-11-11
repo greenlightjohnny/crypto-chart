@@ -2,13 +2,13 @@ import React, { useEffect, useState, useContext } from "react"
 
 import geckoapi from "../apis/gecko"
 import { CurrencyContext } from "../context/currencyContext"
-import { useTable } from "react-table"
+import Yuck from "./Boring"
 
-const Table = () => {
+const Sad = () => {
+  const [coins, setCoins] = useState()
   const { coinList, deleteCoin } = useContext(CurrencyContext)
   const [isLoading, setIsLoading] = useState(false)
-  const [coins, setCoins] = useState()
-
+  console.log(coinList)
   useEffect(() => {
     setIsLoading(true)
     const fetchData = async () => {
@@ -37,63 +37,7 @@ const Table = () => {
     }
   }, [coinList])
 
-  const columns = [
-    {
-      Header: "Name",
-      accessor: "name",
-    },
-    {
-      Header: "Price",
-      accessor: "current_price",
-    },
-  ]
-
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    rows,
-    prepareRow,
-  } = useTable({
-    columns,
-    coins,
-  })
-
-  return (
-    <>
-      {isLoading ? (
-        <table {...getTableProps()}>
-          <thead>
-            {headerGroups.map((headerGroup) => (
-              <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()}>
-                    {column.render("Header")}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody {...getTableBodyProps()}>
-            {rows.map((row, i) => {
-              prepareRow(row)
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map((cell) => {
-                    return (
-                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                    )
-                  })}
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
-      ) : (
-        <p>Ummmm</p>
-      )}
-    </>
-  )
+  return <div>{!coins ? <p>Hello</p> : <Yuck data={coins} />}</div>
 }
 
-export default Table
+export default Sad

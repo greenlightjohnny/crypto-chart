@@ -6,9 +6,7 @@ import HomeXT from "../components/homext"
 const summary = () => {
   return (
     <>
-      <div className={Styles.home}>
-        <List />
-      </div>
+      <div className={Styles.home}>{/* <List /> */}</div>
       <HomeXT />
     </>
   )
