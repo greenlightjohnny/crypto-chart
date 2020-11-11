@@ -1,19 +1,63 @@
 import React, { useState } from "react"
 import Styles from "../styles/details.module.scss"
+import moment from "moment"
+import dayjs from "dayjs"
 
 function DetailsMap({ data }) {
   const [list, setList] = useState([
     { name: "Market Cap", value: "market_cap" },
     { name: "All Time High", value: "ath" },
-    { name: "Market Cap2", value: "market_cap" },
-    { name: "Market Cap3", value: "market_cap" },
-    { name: "Market Cap4", value: "market_cap" },
+    { name: "ATH Date", value: "ath_date" },
+    { name: "All Time Low", value: "atl" },
+    { name: "ATL Date", value: "atl_date" },
+    { name: "24H Low", value: "low_24h" },
+    { name: "24H High", value: "high_24h" },
+    { name: "24H % ", value: "price_change_percentage_24h" },
+    { name: "Total Supply", value: "total_supply" },
+    { name: "Total Volume", value: "total_volume" },
+    { name: "Market Cap Rank", value: "market_cap_rank" },
+    { name: "Circulating Supply", value: "circulating_supply" },
   ])
   const doWeHaveData = data
-  console.log(data.ath)
+  console.log(data)
+
   const test = list[1].value
-  console.log(test)
-  console.log(`${data[test]}`)
+  //console.log(test)
+  //console.log(`${data[test]}`)
+
+  const dstring = data.ath_date
+  console.log(dstring)
+  const again = dayjs(dstring).format("MMM D, YYYY")
+  console.log(again)
+
+  const renderPrice = (tar) => {
+    let colors = ""
+
+    if (data) {
+      if (data[tar] > 0) {
+        colors = { color: "green" }
+      } else {
+        colors = { color: "red" }
+      }
+
+      return (
+        <>
+          <span style={colors}>{`$ ${data[tar]}`}</span>
+        </>
+      )
+    }
+  }
+
+  const formatDate = (checkMe) => {
+    console.log(checkMe)
+    if (checkMe === "ath_date" || checkMe === "atl_date") {
+      let oldDate = data[checkMe]
+      let newDate = dayjs(oldDate).format("MMM D, YYYY")
+      return <span>{newDate}</span>
+    } else {
+      return <span>{`${data[checkMe]}`}</span>
+    }
+  }
   return (
     <>
       {doWeHaveData ? (
@@ -27,10 +71,19 @@ function DetailsMap({ data }) {
               return (
                 <div key={item.name} className={Styles.flexItem}>
                   <span className={Styles.market}>{item.name}</span>
-                  <span>{`${data[item.value]}`}</span>
+                  {formatDate(item.value)}
+                  {/* <span>{`${data[item.value]}`}</span> */}
                 </div>
               )
             })}
+            <div className={Styles.flexItem}>
+              <span className={Styles.market}>24H Change:</span>
+              {renderPrice("price_change_24h")}
+            </div>
+            <div className={Styles.flexItem}>
+              <span className={Styles.market}>24H % Change:</span>
+              {renderPrice("price_change_percentage_24h")}
+            </div>
           </div>
         </div>
       ) : (

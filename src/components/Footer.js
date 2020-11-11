@@ -26,6 +26,9 @@ function Footer() {
           <Link to="/">Data</Link>
         </div>
       </div>
+      <p>
+        Powered by <a href="https://www.coingecko.com/en/api">CoinGecko</a> API
+      </p>
     </footer>
   )
 }
