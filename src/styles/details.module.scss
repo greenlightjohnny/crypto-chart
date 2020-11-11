@@ -26,6 +26,16 @@
     width: 50px;
     height: auto;
   }
+
+  p {
+    margin-left: auto;
+    font-size: 0.7rem;
+    color: rgb(105, 101, 101);
+    span {
+      color: #000;
+      font-size: 0.8rem;
+    }
+  }
 }
 .flex {
   max-width: 1300px;
@@ -40,7 +50,8 @@
     //border: 1px solid blue;
     flex: 1;
     display: flex;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
+    margin-top: 6px;
     flex-direction: column;
     min-width: 120px;
     max-width: fit-content;

@@ -2,33 +2,33 @@ import React, { useState } from "react"
 import Styles from "../styles/details.module.scss"
 import moment from "moment"
 import dayjs from "dayjs"
+import { shortenDate, lastUpdate } from "../utils/formatDate"
 
 function DetailsMap({ data }) {
   const [list, setList] = useState([
-    { name: "Market Cap", value: "market_cap" },
-    { name: "All Time High", value: "ath" },
-    { name: "ATH Date", value: "ath_date" },
-    { name: "All Time Low", value: "atl" },
-    { name: "ATL Date", value: "atl_date" },
-    { name: "24H Low", value: "low_24h" },
-    { name: "24H High", value: "high_24h" },
-    { name: "24H % ", value: "price_change_percentage_24h" },
-    { name: "Total Supply", value: "total_supply" },
-    { name: "Total Volume", value: "total_volume" },
-    { name: "Market Cap Rank", value: "market_cap_rank" },
-    { name: "Circulating Supply", value: "circulating_supply" },
+    { name: "Market Cap:", value: "market_cap" },
+    { name: "All Time High:", value: "ath" },
+    { name: "ATH Date:", value: "ath_date" },
+    { name: "All Time Low:", value: "atl" },
+    { name: "ATL Date:", value: "atl_date" },
+    { name: "24H Low:", value: "low_24h" },
+    { name: "24H High:", value: "high_24h" },
+
+    { name: "Total Supply:", value: "total_supply" },
+    { name: "Total Volume:", value: "total_volume" },
+    { name: "Market Cap Rank:", value: "market_cap_rank" },
+    { name: "Circulating Supply:", value: "circulating_supply" },
   ])
   const doWeHaveData = data
-  console.log(data)
 
   const test = list[1].value
   //console.log(test)
   //console.log(`${data[test]}`)
 
   const dstring = data.ath_date
-  console.log(dstring)
+  //console.log(dstring)
   const again = dayjs(dstring).format("MMM D, YYYY")
-  console.log(again)
+  //console.log(again)
 
   const renderPrice = (tar) => {
     let colors = ""
@@ -48,16 +48,20 @@ function DetailsMap({ data }) {
     }
   }
 
-  const formatDate = (checkMe) => {
-    console.log(checkMe)
-    if (checkMe === "ath_date" || checkMe === "atl_date") {
-      let oldDate = data[checkMe]
-      let newDate = dayjs(oldDate).format("MMM D, YYYY")
-      return <span>{newDate}</span>
-    } else {
-      return <span>{`${data[checkMe]}`}</span>
-    }
-  }
+  // const formatUpdate = (tas) => {
+  //   const newD = dayjs(tas).format("DD, hh:ss")
+  //   return newD
+  // }
+
+  // const formatDate = (checkMe) => {
+  //   if (checkMe === "ath_date" || checkMe === "atl_date") {
+  //     let oldDate = data[checkMe]
+  //     let newDate = dayjs(oldDate).format("MMM D, YYYY")
+  //     return <span>{newDate}</span>
+  //   } else {
+  //     return <span>{`${data[checkMe]}`}</span>
+  //   }
+  // }
   return (
     <>
       {doWeHaveData ? (
@@ -65,13 +69,19 @@ function DetailsMap({ data }) {
           <div className={Styles.header}>
             <img src={data.image} alt={data.name} />
             <h4>{data.name}</h4>
+            <p>
+              Last Updated:{" "}
+              <span className={Styles.spanNumber}>
+                {lastUpdate(data.last_updated)}
+              </span>
+            </p>
           </div>
           <div className={Styles.flex}>
             {list.map((item) => {
               return (
                 <div key={item.name} className={Styles.flexItem}>
                   <span className={Styles.market}>{item.name}</span>
-                  {formatDate(item.value)}
+                  {shortenDate(item.value, data)}
                   {/* <span>{`${data[item.value]}`}</span> */}
                 </div>
               )
