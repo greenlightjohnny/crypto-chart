@@ -5,7 +5,7 @@ import { CurrencyContext } from "../context/currencyContext"
 import Two from "./Boring"
 import Styles from "../styles/boring.module.scss"
 
-const Sad = () => {
+const TableData = () => {
   const [coins, setCoins] = useState()
   const { coinList, deleteCoin } = useContext(CurrencyContext)
   const [isLoading, setIsLoading] = useState(false)
@@ -45,4 +45,4 @@ const Sad = () => {
   )
 }
 
-export default Sad
+export default TableData
