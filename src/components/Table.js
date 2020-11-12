@@ -2,7 +2,8 @@ import React, { useEffect, useState, useContext } from "react"
 
 import geckoapi from "../apis/gecko"
 import { CurrencyContext } from "../context/currencyContext"
-import Yuck from "./Boring"
+import Two from "./Boring"
+import Styles from "../styles/boring.module.scss"
 
 const Sad = () => {
   const [coins, setCoins] = useState()
@@ -37,7 +38,11 @@ const Sad = () => {
     }
   }, [coinList])
 
-  return <div>{!coins ? <p>Hello</p> : <Yuck data={coins} />}</div>
+  return (
+    <div className={Styles.container}>
+      {!coins ? <p>Hello</p> : <Two coins={coins} />}
+    </div>
+  )
 }
 
 export default Sad
