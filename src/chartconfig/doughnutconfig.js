@@ -10,8 +10,9 @@ export const historyOptions = {
     position: "bottom",
   },
   animation: {
+    duration: 2000,
     animateScale: true,
-    animateRotate: false,
+    animateRotate: true,
   },
   plugins: {
     deferred: {
@@ -27,8 +28,12 @@ export const data = {
   datasets: [
     {
       label: "Gains",
-      data: [10, 20, 30],
-      backgroundColor: ["red", "blue", "green"],
+      data: [12, 24, 26],
+      backgroundColor: [
+        "rgb(211, 90, 90)",
+        "rgb(59, 59, 236)",
+        "rgb(59, 236, 112)",
+      ],
     },
   ],
 

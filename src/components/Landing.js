@@ -1,6 +1,7 @@
 import React from "react"
 import Styles from "../styles/landing.module.scss"
 import Laptop from "../images/laptop.png"
+import Community from "./landingcomponents/Community"
 import Doughnut from "./landingcomponents/LandingDoughnut"
 const Landing = () => {
   return (
@@ -8,7 +9,10 @@ const Landing = () => {
       <div className={Styles.main}>
         <div className={Styles.flex}>
           <div className={Styles.flexItem}>
-            <h2>Crypto Tracker. Portfolio. Data. Visualizations</h2>
+            <h2>
+              Cryptocurrency Data{" "}
+              <span className={Styles.high}>Visualized</span>
+            </h2>
             <p>
               Koofer.io is a free extremely customizable cryptocurrency tracking
               app. View current and historical prices, track your portfolio, and
@@ -39,6 +43,7 @@ const Landing = () => {
           </div>
         </div>
       </section>
+      <Community />
     </>
   )
 }

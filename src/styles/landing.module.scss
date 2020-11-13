@@ -13,21 +13,46 @@
   margin: 0 auto;
   margin-top: 7rem;
 
+  @media only screen and (max-width: 950px) {
+    flex-direction: column;
+    align-items: stretch;
+    margin-top: 3rem;
+  }
+
   .flexItem {
     //min-width: 300;
-    border: 1px solid blue;
+    //border: 1px solid blue;
 
     &:first-child {
-      flex: 0 0 30%;
+      flex: 0 0 35%;
       padding-left: 5%;
+      @media only screen and (max-width: 950px) {
+        flex: 0 0 70%;
+        padding-left: 0;
+        max-width: 70%;
+        margin: 0 auto;
+        margin-bottom: 1.5rem;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
     }
     &:last-child {
-      flex: 0 0 70%;
+      flex: 0 0 65%;
+      @media only screen and (max-width: 950px) {
+        flex: 0 0 100%;
+      }
     }
 
     h2 {
       color: #212529;
       margin-bottom: 10px;
+      letter-spacing: 1px;
+      .high {
+        color: rgb(49, 52, 255);
+        font-weight: 800;
+        //letter-spacing: 0.1;
+        font-size: 1.7rem;
+      }
     }
 
     p {
@@ -60,9 +85,12 @@
     display: flex;
     flex: 1;
     justify-content: space-between;
+    align-items: center;
 
     .flexItem2 {
       flex: 1;
+      margin: 2vw;
+      color: rgb(59, 236, 112);
 
       h2 {
         font-weight: 500;
@@ -74,6 +102,67 @@
         font-size: 18px;
         line-height: 29px;
         color: #212529;
+      }
+    }
+  }
+}
+
+.landing3 {
+  background-color: rgb(219, 255, 252);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  .container3 {
+    max-width: 1300px;
+    margin: 0 auto;
+
+    p {
+      text-align: center;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 1rem;
+
+      //margin-bottom: 2rem;
+      font-size: 2.2rem;
+
+      font-weight: 500;
+      color: #212529;
+    }
+  }
+
+  .flex3 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    flex: 1;
+
+    .flexItem3 {
+      flex: 1;
+      //border: 1px solid blue;
+      margin: 15px;
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+      border-radius: 12px;
+
+      h4 {
+        font-size: 1.5rem;
+        color: #212529;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        line-height: 22px;
+        color: #212529;
+        font-size: 1.1rem;
+        text-align: left;
       }
     }
   }
