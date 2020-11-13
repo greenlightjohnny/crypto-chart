@@ -2,11 +2,13 @@ import React, { useRef, useEffect, useState } from "react"
 import ChartJS from "chart.js"
 import Styles from "../styles/chart.module.scss"
 import { historyOptions } from "../chartconfig/chartconfig"
+import Custom from "./chartcomponents/ChartCustom"
 const Chart = ({ chartData, handleTime, time, text }) => {
   const chartRef = useRef()
   const { days, mainInfo } = chartData
   const { daysLength, setDaysLength } = useState("24")
   const [customValue, setCustomValue] = useState("")
+  const [isOpen, setIsOpen] = useState(false)
   const [buttonList, setButtonList] = useState([
     { time: 1, text: "1D" },
     { time: 7, text: "1W" },
@@ -27,13 +29,46 @@ const Chart = ({ chartData, handleTime, time, text }) => {
 
   let coinName
   let timeFrame
+  let pChange
+  let gradient
+  let gradient2
+  // let cOptions = {
+  //   type: "line",
+  //   data: {
+  //     datasets: [
+  //       {
+  //         label: `${coinName} price`,
+  //         data: days,
+  //         //backgroundColor: gradient,
+  //         backgroundColor: pChange < 0 ? gradient : gradient2,
+  //         borderColor: "rgb(250, 73, 73)",
+  //         pointRadius: 0,
+  //       },
+  //     ],
+  //   },
+  //   options: { ...historyOptions },
+  // }
+
   useEffect(() => {
     if (chartRef && chartRef.current) {
+      const ctx = chartRef.current.getContext("2d")
+      gradient = ctx.createLinearGradient(0, 0, 0, 450)
+      gradient2 = ctx.createLinearGradient(0, 0, 0, 450)
+
+      gradient.addColorStop(0, "rgba(255, 0,0, 0.5)")
+      gradient.addColorStop(0.5, "rgba(255, 0, 0, 0.25)")
+      gradient.addColorStop(1, "rgba(255, 0, 0, 0)")
+
+      gradient2.addColorStop(0, "rgba(0, 255, 34, 0.6)")
+      gradient2.addColorStop(0.5, "rgba(0, 255, 34, 0.2)")
+      gradient2.addColorStop(1, "rgba(0, 255, 34, 0)")
       if (chartData.mainInfo !== undefined) {
         coinName = mainInfo.name
+        pChange = mainInfo.price_change_24h
       } else {
         coinName = "coin"
       }
+
       const chartInstance = new ChartJS(chartRef.current, {
         type: "line",
         data: {
@@ -42,19 +77,41 @@ const Chart = ({ chartData, handleTime, time, text }) => {
               label: `${coinName} price`,
               data: days,
               //backgroundColor: gradient,
-              backgroundColor: "rgb(250, 73, 73)",
-              borderColor: "rgb(250, 73, 73)",
+              backgroundColor: pChange < 0 ? gradient : gradient2,
+              borderColor: pChange < 0 ? "red" : "green",
               pointRadius: 0,
             },
           ],
         },
         options: { ...historyOptions },
       })
+      // const ctx = chartRef.current.getContext("2d")
+      // gradient = ctx.createLinearGradient(0, 0, 0, 450)
+      // gradient.addColorStop(0, "rgba(255, 0,0, 0.5)")
+      // gradient.addColorStop(0.5, "rgba(255, 0, 0, 0.25)")
+      // gradient.addColorStop(1, "rgba(255, 0, 0, 0)")
+
+      // setBG(gradient)
+      // console.log(gradient)
     }
   }, [chartData])
 
+  // useEffect(() => {
+  //   const ctx = chartRef.current.getContext("2d")
+  //     gradient = ctx.createLinearGradient(0, 0, 0, 450)
+  //     gradient.addColorStop(0, "rgba(255, 0,0, 0.5)")
+  //     gradient.addColorStop(0.5, "rgba(255, 0, 0, 0.25)")
+  //     gradient.addColorStop(1, "rgba(255, 0, 0, 0)")
+
+  // },[bg])
+
   const handleChange = (e) => {
     setCustomValue(e.target.value)
+  }
+
+  const toggleModal = () => {
+    let current = isOpen
+    setIsOpen(!current)
   }
 
   const handleSubmit = (e) => {
@@ -156,6 +213,8 @@ const Chart = ({ chartData, handleTime, time, text }) => {
         <button onClick={() => handleTime(180)}>6M</button>
         <button onClick={() => handleTime(365)}>1Y</button> */}
       </div>
+      <button onClick={toggleModal}>Customize</button>
+      {isOpen ? <Custom /> : null}
     </div>
   )
 }

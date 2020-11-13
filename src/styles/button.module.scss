@@ -10,13 +10,33 @@
 
 .buttonA {
   display: block;
-  background-color: #1292ee;
+  //background-color: #1292ee;
   max-width: fit-content;
+  background-image: linear-gradient(
+    to right,
+    #84fab0 0%,
+    #8fd3f4 51%,
+    #84fab0 100%
+  );
   color: #fff;
   font-weight: bold;
   font-size: 1rem;
   padding: 6px 16px;
-  border-radius: 9px;
+  border-radius: 6px;
   margin-left: auto;
   margin-top: 1rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  //box-shadow: 5px 5px 20px 5px #eee;
+  transition: all ease-in-out 0.3s;
+
+  &:hover {
+    box-shadow: 5px 5px 10px rgba(99, 99, 99, 0.2);
+    transition: ease-in-out all 0.3s;
+    background-image: linear-gradient(
+      to right,
+      #84fab0 0%,
+      #8fd3f4 51%,
+      #84fab0 100%
+    );
+  }
 }

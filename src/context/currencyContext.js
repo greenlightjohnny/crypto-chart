@@ -8,6 +8,7 @@ export const CurrencyContextProvider = (props) => {
     "hex",
     "ethereum",
     "litecoin",
+    "dash",
   ])
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [user, setUser] = useState(null)

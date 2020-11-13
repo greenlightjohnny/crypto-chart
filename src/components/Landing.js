@@ -19,8 +19,8 @@ const Landing = () => {
               Salamander.io is a free Cryptocurrency tracker and visualization
               tool. Turn your portfolio into a graph. Track current prices.
               Create historical charts for specific dates of over 1,000 coins.
-              Choose from numerous graph styles. Highly customizable from the
-              data sets down to the colors, downloadable as images.
+              Choose from numerous graph types and styles. Highly customizable
+              from the data sets down to the colors, downloadable as images.
             </p>
 
             <AnchorButton goto="/register" mycolor="#3134ff" text="Sign Up" />
