@@ -5,6 +5,7 @@ import Summary from "./pages/home"
 import CoinInfo from "./pages/CoinInfo"
 import About from "./pages/About"
 import Layout from "./layouts/layout"
+import Landing from "./components/Landing"
 import { CurrencyContextProvider } from "./context/currencyContext"
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <BrowserRouter>
           <Layout>
             <Route exact path="/" component={Summary} />
+            <Route exact path="/landing" component={Landing} />
             <Route exact path="/about" component={About} />
             <Route exact path="/info" component={Info} />
             <Route exact path="/coins/:name" component={CoinInfo} />

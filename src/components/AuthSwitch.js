@@ -39,7 +39,7 @@ const AuthOptions = (props) => {
       ) : (
         <div>
           <Link to="/data">Data</Link>
-          <Link to="/about">About</Link>
+          <Link to="/landing">About</Link>
           <button onClick={register}>Register</button>
           <button onClick={login}>Login</button>{" "}
         </div>
