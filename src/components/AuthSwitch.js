@@ -29,7 +29,7 @@ const AuthOptions = (props) => {
   return (
     <>
       {authContext.isAuthenticated ? (
-        <div>
+        <div className={Styles.auth}>
           <Link to="/secrets">Secret</Link>
           <button onClick={logout}>Log Out</button>
           <Link to="/user" alt="control panel">
@@ -37,7 +37,7 @@ const AuthOptions = (props) => {
           </Link>
         </div>
       ) : (
-        <div>
+        <div className={Styles.auth}>
           <Link to="/data">Data</Link>
           <Link to="/landing">About</Link>
           <button onClick={register}>Register</button>

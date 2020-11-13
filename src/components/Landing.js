@@ -3,6 +3,8 @@ import Styles from "../styles/landing.module.scss"
 import Laptop from "../images/laptop.png"
 import Community from "./landingcomponents/Community"
 import Doughnut from "./landingcomponents/LandingDoughnut"
+import Button from "../utils/Button"
+import AnchorButton from "../utils/AnchorButton"
 const Landing = () => {
   return (
     <>
@@ -14,11 +16,14 @@ const Landing = () => {
               <span className={Styles.high}>Visualized</span>
             </h2>
             <p>
-              Koofer.io is a free extremely customizable cryptocurrency tracking
-              app. View current and historical prices, track your portfolio, and
-              look at pretty charts created from your data. <br></br>
-              Totally free. No spam. We don't sell your data.
+              Salamander.io is a free Cryptocurrency tracker and visualization
+              tool. Turn your portfolio into a graph. Track current prices.
+              Create historical charts for specific dates of over 1,000 coins.
+              Choose from numerous graph styles. Highly customizable from the
+              data sets down to the colors, downloadable as images.
             </p>
+
+            <AnchorButton goto="/register" mycolor="#3134ff" text="Sign Up" />
           </div>
           <div className={Styles.flexItem}>
             <div className={Styles.imgContainer}>
