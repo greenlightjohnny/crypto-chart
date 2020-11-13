@@ -1,10 +1,12 @@
-import React, { useRef, useEffect, useState } from "react"
+import React, { useRef, useEffect, useState, useContext } from "react"
 import ChartJS from "chart.js"
 import Styles from "../styles/chart.module.scss"
 import { historyOptions } from "../chartconfig/chartconfig"
+import { CurrencyContext } from "../context/currencyContext"
 import Custom from "./chartcomponents/ChartCustom"
 const Chart = ({ chartData, handleTime, time, text }) => {
   const chartRef = useRef()
+  const { line } = useContext(CurrencyContext)
   const { days, mainInfo } = chartData
   const { daysLength, setDaysLength } = useState("24")
   const [customValue, setCustomValue] = useState("")
@@ -78,7 +80,7 @@ const Chart = ({ chartData, handleTime, time, text }) => {
               data: days,
               //backgroundColor: gradient,
               backgroundColor: pChange < 0 ? gradient : gradient2,
-              borderColor: pChange < 0 ? "red" : "green",
+              borderColor: pChange < 0 ? line.linePlus : line.lineNeg,
               pointRadius: 0,
             },
           ],
@@ -94,7 +96,7 @@ const Chart = ({ chartData, handleTime, time, text }) => {
       // setBG(gradient)
       // console.log(gradient)
     }
-  }, [chartData])
+  }, [chartData, line])
 
   // useEffect(() => {
   //   const ctx = chartRef.current.getContext("2d")

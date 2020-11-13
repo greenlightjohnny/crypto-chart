@@ -10,6 +10,10 @@ export const CurrencyContextProvider = (props) => {
     "litecoin",
     "dash",
   ])
+  const [line, setLine] = useState({
+    linePlus: "blue",
+    lineNeg: "red",
+  })
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
 
@@ -24,9 +28,24 @@ export const CurrencyContextProvider = (props) => {
     setCoinList(filterMe)
   }
 
+  const handleLine = (name, color) => {
+    console.log(name)
+    if (name === "lineNeg") {
+      setLine({ ...line, lineNeg: color })
+    }
+  }
+
   return (
     <CurrencyContext.Provider
-      value={{ coinList, deleteCoin, isAuthenticated, setIsAuthenticated }}
+      value={{
+        line,
+        setLine,
+        handleLine,
+        coinList,
+        deleteCoin,
+        isAuthenticated,
+        setIsAuthenticated,
+      }}
     >
       {props.children}
     </CurrencyContext.Provider>
