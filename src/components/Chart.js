@@ -3,6 +3,7 @@ import ChartJS from "chart.js"
 import Styles from "../styles/chart.module.scss"
 import { historyOptions } from "../chartconfig/chartconfig"
 import { CurrencyContext } from "../context/currencyContext"
+import Gear from "../images/gear.svg"
 import Custom from "./chartcomponents/ChartCustom"
 const Chart = ({ chartData, handleTime, time, text }) => {
   const chartRef = useRef()
@@ -215,8 +216,14 @@ const Chart = ({ chartData, handleTime, time, text }) => {
         <button onClick={() => handleTime(180)}>6M</button>
         <button onClick={() => handleTime(365)}>1Y</button> */}
       </div>
-      <button onClick={toggleModal}>Customize</button>
-      {isOpen ? <Custom /> : null}
+      <div className={Styles.customCon}>
+        <button onClick={toggleModal}>
+          {" "}
+          <img src={Gear} alt="gear"></img>
+          <span>Settings</span>
+        </button>
+        {isOpen ? <Custom open={isOpen} /> : null}
+      </div>
     </div>
   )
 }

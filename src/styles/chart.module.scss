@@ -96,3 +96,29 @@
     min-width: 200px;
   }
 }
+
+.customCon {
+  max-width: fit-content;
+  margin-right: 0;
+  margin-left: auto;
+
+  button {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #000;
+
+    span {
+      display: inline-block;
+      font-size: 0.6rem;
+      color: rgb(37, 37, 37);
+      margin-left: 5px;
+    }
+
+    img {
+      display: inline-block;
+      max-height: 15px;
+      max-width: 15px;
+    }
+  }
+}

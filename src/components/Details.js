@@ -21,7 +21,7 @@ const Details = ({ data }) => {
   }
 
   const renderData = () => {
-    console.log(data.mainInfo)
+    //console.log(data.mainInfo)
     if (data.mainInfo) {
       return (
         <>

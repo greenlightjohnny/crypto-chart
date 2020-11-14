@@ -49,7 +49,7 @@ function CoinInfo() {
             },
           }),
         ])
-        console.log(mainInfo)
+        //console.log(mainInfo)
         setCoinData({
           days: chartFormat(days.data.prices),
           mainInfo: mainInfo.data[0],

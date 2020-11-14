@@ -2,7 +2,7 @@ import React from "react"
 import dayjs from "dayjs"
 
 export const shortenDate = (checkMe, data) => {
-  console.log(data)
+  //console.log(data)
   if (checkMe === "ath_date" || checkMe === "atl_date") {
     let oldDate = data[checkMe]
     let newDate = dayjs(oldDate).format("MMM D, YYYY")

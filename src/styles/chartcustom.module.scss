@@ -1,3 +1,12 @@
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .modal {
   position: absolute;
   left: 50%;
@@ -9,11 +18,22 @@
   margin: 0 auto;
   //margin-top: 5rem;
   z-index: 4;
-  background-color: rgba(0, 0, 0, 0.383);
+  background-color: rgba(0, 0, 0, 0.7);
   height: 500px;
   border-radius: 12px;
   padding: 10px;
-  //visibility: hidden;
+  //opacity: 0;
+  //scale: 0;
+  transition: all ease-in-out 0.3s;
+
+  // &.hide {
+  //   opacity: 0;
+  //   scale: 0;
+  // }
+  &.show {
+    transition: all 3s ease-in-out;
+    opacity: 1;
+  }
 
   .flex {
     display: flex;
@@ -21,8 +41,10 @@
     flex: 1;
 
     .flexItem {
-      border: 1px solid blue;
       flex: 1;
+      &:first-child {
+        flex: 0 0 20%;
+      }
       //display: flex;
 
       p {
@@ -39,11 +61,6 @@
         padding: 5px;
       }
 
-      .sample {
-        height: 50px;
-        width: 50px;
-      }
-
       .cover {
         position: fixed;
         top: 0;
@@ -57,5 +74,46 @@
         z-index: 5;
       }
     }
+
+    .flexItem2 {
+      border-left: 3px solid #1292ee;
+    }
+
+    .select {
+      display: flex;
+      flex-direction: column;
+
+      ul {
+        list-style: none;
+      }
+      li {
+        color: #fff;
+        padding: 7px;
+        //border: 1px solid white;
+        background: transparent;
+        transition: all ease-in-out 0.3s;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #1292ee;
+        }
+      }
+    }
   }
+}
+
+.show {
+  transition: all 1000ms ease-in-out;
+  opacity: 1;
+  scale: 1;
+  transform: scale(1);
+}
+
+h5 {
+  color: rgb(136, 204, 221);
+}
+
+.sample {
+  height: 50px;
+  width: 50px;
 }

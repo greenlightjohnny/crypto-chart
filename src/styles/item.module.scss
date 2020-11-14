@@ -1,0 +1,19 @@
+.flexMe {
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.pop {
+  position: absolute;
+  z-index: 5;
+}
+
+.cover {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
