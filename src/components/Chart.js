@@ -92,6 +92,7 @@ const Chart = ({ chartData, handleTime, time, text }) => {
             {
               label: `${coinName} price`,
               data: days,
+
               //backgroundColor: gradient,
               backgroundColor: pChange < 0 ? gradient : gradient2,
               borderColor:

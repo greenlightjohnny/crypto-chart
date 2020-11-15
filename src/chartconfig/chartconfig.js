@@ -5,7 +5,22 @@ export const historyOptions = {
     lineWeight: 1.5,
   },
   animation: {
-    curation: 2000,
+    duration: 2000,
+  },
+  tooltips: {
+    mode: "index",
+    enabled: true,
+    intersect: false,
+  },
+  spanGaps: false,
+  hover: {
+    mode: "index",
+    intersect: false,
+  },
+  elements: {
+    line: {
+      tension: 1,
+    },
   },
   maintainAspectRatio: false,
   responsive: true,

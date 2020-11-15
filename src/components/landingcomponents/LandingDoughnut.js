@@ -31,9 +31,9 @@ const LandingDoughnut = () => {
   return (
     <div>
       <canvas ref={chartRef} id="myChart" height={300} width={300} />
-      <a onClick={handleDownload} download="Chart.jpg">
+      {/* <a onClick={handleDownload} download="Chart.jpg">
         Download
-      </a>
+      </a> */}
     </div>
   )
 }

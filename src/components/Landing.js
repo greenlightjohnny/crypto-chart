@@ -1,10 +1,11 @@
 import React from "react"
 import Styles from "../styles/landing.module.scss"
-import Laptop from "../images/laptop.png"
+import Laptop from "../images/laptop2.png"
 import Community from "./landingcomponents/Community"
 import Doughnut from "./landingcomponents/LandingDoughnut"
 import Button from "../utils/Button"
 import AnchorButton from "../utils/AnchorButton"
+import ChartSelect from "./landingcomponents/ChartSelect"
 const Landing = () => {
   return (
     <>
@@ -49,6 +50,7 @@ const Landing = () => {
         </div>
       </section>
       <Community />
+      <ChartSelect />
     </>
   )
 }
