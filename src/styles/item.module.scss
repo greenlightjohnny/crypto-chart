@@ -1,25 +1,39 @@
 .overall {
   flex: 1 1 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
 
   p {
     text-align: center;
     color: #fff;
     padding: 7px;
   }
+
+  &:last-child {
+    justify-self: end;
+    flex: 1;
+    align-self: flex-end;
+  }
 }
 
 .flexMe {
-  border: 1px solid blue;
+  //border: 1px solid blue;
   display: flex;
   flex-direction: row;
-  flex: 1;
+  height: 100%;
+  margin-top: 2rem;
 
-  button {
+  .itemBtn {
+    margin-right: 5px;
     font-size: 0.7rem;
     color: #fff;
     padding: 7px;
-    border: 1px solid grey;
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    flex-direction: row;
+    //border: 1px solid grey;
   }
 
   .sampleColor {
@@ -31,7 +45,8 @@
 
 .pop {
   position: absolute;
-  z-index: 5;
+  margin-top: 2rem;
+  //z-index: 5;
 }
 
 .cover {
@@ -40,4 +55,18 @@
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.overall .bottomBtn {
+  color: #fff;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  button {
+    margin: 0 5px;
+  }
 }

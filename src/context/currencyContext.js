@@ -25,36 +25,40 @@ export const CurrencyContextProvider = (props) => {
       colorNegative: "blue",
     },
   })
+
+  //cool red #de1f1f
+  // bluish #194d21
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
 
   const deleteCoin = (coin) => {
-    console.log(coin)
+    //console.log(coin)
     const newList = [...coinList]
-    console.log(newList)
+    //console.log(newList)
     let filterMe = newList.filter((item) => {
       return item !== coin
     })
-    console.log(filterMe)
+    //console.log(filterMe)
     setCoinList(filterMe)
   }
 
   const handleLine = (name, color) => {
-    console.log(name)
+    //console.log(name)
     if (name === "lineNeg") {
       setLine({ ...line, lineNeg: color })
     }
   }
 
   const handleUserSettings = (userObject) => {
-    console.log(userObject)
+    //console.log(userObject)
+    setStoredSettings(userObject)
   }
 
   const [storedSettings, setStoredSettings] = useState(
     JSON.parse(window.localStorage.getItem("userAll")) || userSettings
   )
 
-  console.log(storedSettings)
+  //console.log(storedSettings)
 
   useEffect(() => {
     localStorage.setItem("userAll", JSON.stringify(storedSettings))
@@ -72,6 +76,7 @@ export const CurrencyContextProvider = (props) => {
         userSettings,
         setUserSettings,
         storedSettings,
+        handleUserSettings,
       }}
     >
       {props.children}

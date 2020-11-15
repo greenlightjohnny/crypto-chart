@@ -51,7 +51,7 @@ const Chart = ({ chartData, handleTime, time, text }) => {
   //   },
   //   options: { ...historyOptions },
   // }
-  console.log(storedSettings.lineInfo.colorPositive)
+  //console.log(storedSettings.lineInfo.colorPositive)
   useEffect(() => {
     if (chartRef && chartRef.current) {
       const ctx = chartRef.current.getContext("2d")
@@ -220,12 +220,12 @@ const Chart = ({ chartData, handleTime, time, text }) => {
         <button onClick={() => handleTime(365)}>1Y</button> */}
       </div>
       <div className={Styles.customCon}>
-        <button onClick={toggleModal}>
+        <button className={Styles.conBtn} onClick={toggleModal}>
           {" "}
           <img src={Gear} alt="gear"></img>
           <span>Settings</span>
         </button>
-        {isOpen ? <Custom open={isOpen} /> : null}
+        {isOpen ? <Custom open={isOpen} exit={toggleModal} /> : null}
       </div>
     </div>
   )

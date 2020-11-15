@@ -9,10 +9,11 @@ import Grid from "./Grid"
 import ColorPicker from "./Line"
 import Button from "../../utils/Button"
 
-const ChartCustom = () => {
+const ChartCustom = ({ exit }) => {
   const { line, userSettings, storedSettings, handleLine } = useContext(
     CurrencyContext
   )
+  //console.log(exit)
   const [show, setShow] = useState(false)
   const [settingList, setSettingList] = useState([
     { name: "Line", active: false },
@@ -44,11 +45,11 @@ const ChartCustom = () => {
     })
 
     if (value[0].name === "Background") {
-      return <Background />
+      return <Background exit={exit} />
     } else if (value[0].name === "Grid") {
-      return <Grid />
+      return <Grid exit={exit} />
     } else if (value[0].name === "Line") {
-      return <ColorPicker />
+      return <ColorPicker exit={exit} />
     } else {
       return null
     }
@@ -68,11 +69,11 @@ const ChartCustom = () => {
   }, [])
   const handleP = (color) => {
     setCurrentColor(color.hex)
-    console.log(color.rgb)
+    //console.log(color.rgb)
   }
   const handleClose = (item) => {
     setShow(false)
-    console.log(item)
+    //console.log(item)
     handleLine(item, currentColor)
   }
 
@@ -99,12 +100,26 @@ const ChartCustom = () => {
           </div>
           {displayComponent()}
         </div>
-        <Button
-          className={Styles.setAll}
-          textColor="#fff"
-          mycolor="#1292ee"
-          text="Apply"
-        />
+        {/* <div className={Styles.bottom}>
+          <Button
+            className={Styles.setAll}
+            textColor="#fff"
+            mycolor="#1292ee"
+            text="Apply"
+          />
+          <Button
+            className={Styles.setAll}
+            textColor="#fff"
+            mycolor="#de1f1f"
+            text="Discard"
+          />
+          <Button
+            className={Styles.setAll}
+            textColor="#fff"
+            mycolor="#de1f1f"
+            text="Close"
+          />
+        </div> */}
       </div>
     </animated.div>
   )

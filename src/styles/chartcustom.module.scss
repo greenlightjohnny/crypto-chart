@@ -49,13 +49,13 @@
     flex: 1;
     position: relative;
 
-    button {
-      border: 1px solid black;
-      color: #fff;
-      font-size: 0.8rem;
-      margin: 0;
-      padding: 5px;
-    }
+    // button {
+    //   //border: 1px solid black;
+    //   color: #fff;
+    //   font-size: 0.8rem;
+    //   margin: 0;
+    //   padding: 5px;
+    // }
 
     .flexItem {
       flex: 1;
@@ -71,16 +71,16 @@
         font-size: 0.8rem;
       }
 
-      button {
-        border: 1px solid black;
-        color: #fff;
-        font-size: 0.8rem;
-        margin: 0;
-        padding: 5px;
-        .setAll {
-          color: #fff;
-        }
-      }
+      // button {
+      //   border: 1px solid black;
+      //   color: #fff;
+      //   font-size: 0.8rem;
+      //   margin: 0;
+      //   padding: 5px;
+      //   .setAll {
+      //     color: #fff;
+      //   }
+      // }
 
       .setAll {
         color: #fff;
@@ -101,7 +101,7 @@
     }
 
     .flexItem2 {
-      border-left: 3px solid #1292ee;
+      //border-left: 3px solid #1292ee;
     }
 
     .select {
@@ -145,4 +145,14 @@ h5 {
 
 .setAll {
   color: #fff;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  button {
+    margin: 0 5px;
+  }
 }
