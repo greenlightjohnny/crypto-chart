@@ -63,8 +63,8 @@ const Chart = ({ chartData, handleTime, time, text }) => {
   useEffect(() => {
     if (chartRef && chartRef.current) {
       const ctx = chartRef.current.getContext("2d")
-      gradient = ctx.createLinearGradient(0, 0, 0, 650)
-      gradient2 = ctx.createLinearGradient(0, 0, 0, 650)
+      gradient = ctx.createLinearGradient(0, 0, 0, 950)
+      gradient2 = ctx.createLinearGradient(0, 0, 0, 950)
 
       gradient.addColorStop(0, "rgba(255, 0,0, 0.3)")
       gradient.addColorStop(0.4, "rgba(255, 0, 0, 0.5)")
