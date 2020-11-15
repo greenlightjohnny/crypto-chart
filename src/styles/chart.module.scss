@@ -20,16 +20,18 @@
 
   button {
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 4px 12px;
-    background-color: rgb(122, 208, 209);
+    //background-color: rgb(122, 208, 209);
+    background-color: transparent;
     color: black;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     margin-left: 0;
     transition: all ease-in-out 0.3s;
+    font-size: 0.8rem;
 
     &:hover {
-      background-color: cyan;
+      background-color: rgb(153, 233, 233);
     }
   }
 
@@ -39,7 +41,8 @@
   }
 
   .active {
-    background-color: rgb(173, 243, 255);
+    //background-color: //rgb(173, 243, 255);
+    background-color: rgb(204, 239, 245);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   }
 }

@@ -56,6 +56,11 @@ const Line = ({ exit }) => {
     //handleLine(item, currentColor)
   }
 
+  const handleDiscard = () => {
+    setNewSettings({
+      ...storedSettings,
+    })
+  }
   let myTest
   const check = (color) => {
     if (newSettings.hasOwnProperty("lineInfo")) {
@@ -129,14 +134,14 @@ const Line = ({ exit }) => {
           textColor="#fff"
           mycolor="#1292ee"
           text="Apply"
-          onClick={handleChange}
+          handleIt={handleChange}
         />
         <Button
           className={Styles.yep}
           textColor="#fff"
           mycolor="#de1f1f"
           text="Discard"
-          onClick={handleChange}
+          onClick={handleDiscard}
         />
         <Button
           className={Styles.yep}

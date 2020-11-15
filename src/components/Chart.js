@@ -20,7 +20,7 @@ const Chart = ({ chartData, handleTime, time, text }) => {
     { time: 365, text: "1Y" },
     { time: 999, text: "Submit" },
   ])
-
+  // console.log(chartData)
   //console.log(main.name)
   //let coinName = main.name || "coin"
   //console.log(coinName)
@@ -30,6 +30,8 @@ const Chart = ({ chartData, handleTime, time, text }) => {
 
   //console.log(mainInfo)
 
+  let priceDifference
+  console.log(priceDifference)
   let coinName
   let timeFrame
   let pChange
@@ -52,6 +54,8 @@ const Chart = ({ chartData, handleTime, time, text }) => {
   //   options: { ...historyOptions },
   // }
   //console.log(storedSettings.lineInfo.colorPositive)
+
+  console.log(storedSettings)
   useEffect(() => {
     if (chartRef && chartRef.current) {
       const ctx = chartRef.current.getContext("2d")
@@ -68,6 +72,9 @@ const Chart = ({ chartData, handleTime, time, text }) => {
       if (chartData.mainInfo !== undefined) {
         coinName = mainInfo.name
         pChange = mainInfo.price_change_24h
+        const oldPrice = chartData.days[0].y
+        const currentPrice = chartData.mainInfo.current_price
+        priceDifference = currentPrice - oldPrice
       } else {
         coinName = "coin"
       }
@@ -82,7 +89,7 @@ const Chart = ({ chartData, handleTime, time, text }) => {
               //backgroundColor: gradient,
               backgroundColor: pChange < 0 ? gradient : gradient2,
               borderColor:
-                pChange < 0
+                priceDifference < 0
                   ? storedSettings.lineInfo.colorNegative
                   : storedSettings.lineInfo.colorPositive,
               pointRadius: 0,

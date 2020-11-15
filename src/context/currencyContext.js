@@ -50,7 +50,7 @@ export const CurrencyContextProvider = (props) => {
   }
 
   const handleUserSettings = (userObject) => {
-    //console.log(userObject)
+    console.log(userObject)
     setStoredSettings(userObject)
   }
 
