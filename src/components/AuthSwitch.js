@@ -4,7 +4,7 @@ import axios from "axios"
 import { Link } from "react-router-dom"
 //import UserContext from "../../context/UserContext";
 import { CurrencyContext } from "../context/currencyContext"
-import Logo2 from "../images/usero.png"
+import Logo2 from "../images/weasel.png"
 import Styles from "../styles/authswitch.module.scss"
 
 const AuthOptions = (props) => {

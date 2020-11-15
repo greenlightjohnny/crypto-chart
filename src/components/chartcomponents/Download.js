@@ -7,7 +7,7 @@ const Download = ({ handleDownload, exit }) => {
   const [settingList, setSettingList] = useState([
     { name: "Image", active: true },
     { name: "Data", active: false },
-    { name: "Logo", active: false },
+    { name: "Save", active: false },
     { name: "Coin", active: false },
     { name: "Time", active: false },
     { name: "Grid", active: false },
@@ -20,7 +20,7 @@ const Download = ({ handleDownload, exit }) => {
       }
     })
 
-    if (value[0].name === "image") {
+    if (value[0].name === "Image") {
       return <DownloadImage exit={exit} down={handleDownload} />
     } else if (value[0].name === "Data") {
       return <DownloadData exit={exit} />

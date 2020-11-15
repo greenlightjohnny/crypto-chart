@@ -1,12 +1,16 @@
 import React from "react"
 import Styles from "../styles/footer.module.scss"
 import { Link } from "react-router-dom"
-
+import Weasel from "../images/weasel.png"
 function Footer() {
   return (
     <footer>
       <div className={Styles.flex}>
-        <div className={Styles.flexItem}>Logo</div>
+        <div className={Styles.flexItem}>
+          <div className={Styles.weasel}>
+            <img src={Weasel} alt="Outline of a cute weasel" />
+          </div>
+        </div>
         <div className={Styles.flexItem}>
           <p>Main</p>
           <Link to="/">Home</Link>

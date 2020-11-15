@@ -20,10 +20,26 @@ footer {
       display: flex;
       flex-direction: column;
       color: #000;
+      p {
+        text-align: left;
+        color: rgb(94, 91, 91);
+      }
 
       a {
-        color: blue;
+        color: rgb(96, 96, 230);
         margin-bottom: 10px;
+        font-size: 0.9rem;
+      }
+
+      .weasel {
+        max-height: 70px;
+        width: auto;
+
+        img {
+          object-fit: contain;
+          height: 100%;
+          width: auto;
+        }
       }
     }
   }
