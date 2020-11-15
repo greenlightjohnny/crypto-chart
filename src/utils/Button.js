@@ -1,8 +1,15 @@
 import React from "react"
 import Styles from "../styles/button.module.scss"
 
-const Button = ({ color, text, goto }) => {
-  return <button className={Styles.button}>{text}</button>
+const Button = ({ mycolor, textColor, text, goto }) => {
+  return (
+    <button
+      style={{ background: mycolor, color: textColor || "inherit" }}
+      className={Styles.button}
+    >
+      {text}
+    </button>
+  )
 }
 
 export default Button

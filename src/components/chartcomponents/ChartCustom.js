@@ -7,9 +7,12 @@ import { useTransition, useSpring, animated } from "react-spring"
 import Background from "./background"
 import Grid from "./Grid"
 import ColorPicker from "./Line"
+import Button from "../../utils/Button"
 
 const ChartCustom = () => {
-  const { line, handleLine } = useContext(CurrencyContext)
+  const { line, userSettings, storedSettings, handleLine } = useContext(
+    CurrencyContext
+  )
   const [show, setShow] = useState(false)
   const [settingList, setSettingList] = useState([
     { name: "Line", active: false },
@@ -96,6 +99,12 @@ const ChartCustom = () => {
           </div>
           {displayComponent()}
         </div>
+        <Button
+          className={Styles.setAll}
+          textColor="#fff"
+          mycolor="#1292ee"
+          text="Apply"
+        />
       </div>
     </animated.div>
   )

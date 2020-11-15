@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react"
+import React, { createContext, useEffect, useState } from "react"
 
 export const CurrencyContext = createContext()
 
@@ -13,6 +13,17 @@ export const CurrencyContextProvider = (props) => {
   const [line, setLine] = useState({
     linePlus: "blue",
     lineNeg: "red",
+  })
+  const [userSettings, setUserSettings] = useState({
+    lineInfo: {
+      colorPositive: "green",
+      colorNegative: "yellow",
+    },
+    currencyInfo: {
+      display: true,
+      colorPositive: "orange",
+      colorNegative: "blue",
+    },
   })
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [user, setUser] = useState(null)
@@ -35,6 +46,19 @@ export const CurrencyContextProvider = (props) => {
     }
   }
 
+  const handleUserSettings = (userObject) => {
+    console.log(userObject)
+  }
+
+  const [storedSettings, setStoredSettings] = useState(
+    JSON.parse(window.localStorage.getItem("userAll")) || userSettings
+  )
+
+  console.log(storedSettings)
+
+  useEffect(() => {
+    localStorage.setItem("userAll", JSON.stringify(storedSettings))
+  }, [storedSettings])
   return (
     <CurrencyContext.Provider
       value={{
@@ -45,6 +69,9 @@ export const CurrencyContextProvider = (props) => {
         deleteCoin,
         isAuthenticated,
         setIsAuthenticated,
+        userSettings,
+        setUserSettings,
+        storedSettings,
       }}
     >
       {props.children}

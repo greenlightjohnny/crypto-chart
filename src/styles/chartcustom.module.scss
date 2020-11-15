@@ -12,7 +12,8 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-
+  display: flex;
+  flex-direction: column;
   max-width: 700px;
   min-width: 500px;
   margin: 0 auto;
@@ -22,6 +23,7 @@
   height: 500px;
   border-radius: 12px;
   padding: 10px;
+  padding-bottom: 20px;
   //opacity: 0;
   //scale: 0;
   transition: all ease-in-out 0.3s;
@@ -35,15 +37,31 @@
     opacity: 1;
   }
 
+  .customCon {
+    button {
+      color: #fff;
+    }
+  }
+
   .flex {
     display: flex;
     flex-direction: row;
     flex: 1;
+    position: relative;
+
+    button {
+      border: 1px solid black;
+      color: #fff;
+      font-size: 0.8rem;
+      margin: 0;
+      padding: 5px;
+    }
 
     .flexItem {
       flex: 1;
       &:first-child {
         flex: 0 0 20%;
+        border-right: 2px solid #1292ee;
       }
       //display: flex;
 
@@ -59,6 +77,13 @@
         font-size: 0.8rem;
         margin: 0;
         padding: 5px;
+        .setAll {
+          color: #fff;
+        }
+      }
+
+      .setAll {
+        color: #fff;
       }
 
       .cover {
@@ -116,4 +141,8 @@ h5 {
 .sample {
   height: 50px;
   width: 50px;
+}
+
+.setAll {
+  color: #fff;
 }

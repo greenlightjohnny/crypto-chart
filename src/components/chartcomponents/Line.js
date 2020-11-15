@@ -4,43 +4,103 @@ import { CurrencyContext } from "../../context/currencyContext"
 import { SketchPicker, ChromePicker } from "react-color"
 
 const Line = () => {
-  const { line, handleLine } = useContext(CurrencyContext)
+  const { line, handleLine, userSettings } = useContext(CurrencyContext)
   const [currentColor, setCurrentColor] = useState()
   const colorChanger = (color) => {
     console.log(color)
   }
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState({
+    visible: false,
+    current: "",
+    target: "",
+  })
+  const [newSettings, setNewSettings] = useState({})
+  const [currentBg, setCurrentBg] = useState({
+    positive: userSettings.lineInfo.colorPositive,
+    negative: userSettings.lineInfo.colorNegative,
+  })
+  useEffect(() => {}, [])
 
-  useEffect(() => {
-    setCurrentColor(line.lineNeg)
-  }, [])
   const handleP = (color) => {
     setCurrentColor(color.hex)
-    console.log(color.rgb)
-  }
-  const handleClose = (item) => {
-    setShow(false)
-    console.log(item)
-    handleLine(item, currentColor)
   }
 
+  const handleClose = (item, target) => {
+    console.log(item, target)
+    setNewSettings({
+      ...newSettings,
+      target: {
+        item: currentColor,
+      },
+    })
+    setShow({
+      visible: false,
+      current: "",
+      target: "",
+    })
+    console.log(newSettings)
+    //handleLine(item, currentColor)
+  }
+  let myTest
+  const check = (color) => {
+    if (newSettings.hasOwnProperty("lineInfo")) {
+      return (myTest = newSettings.lineInfo[color])
+    } else {
+      return (myTest = userSettings.lineInfo[color])
+    }
+  }
+
+  console.log(check())
   return (
-    <div className={Styles.flexMe}>
-      <p>Line</p> <button>+color</button>
-      <button onClick={() => setShow(true)}>-color</button>
-      <div
-        className={Styles.sample}
-        style={{ background: `${currentColor}` }}
-      />
-      {show ? (
-        <div className={Styles.pop}>
+    <div className={Styles.overall}>
+      <p>Chart Line</p>
+      <div className={Styles.flexMe}>
+        <button
+          onClick={() =>
+            setShow({
+              visible: true,
+              current: "lineColor",
+              target: "lineColor",
+            })
+          }
+        >
+          {" "}
+          Positive
           <div
-            className={Styles.cover}
-            onClick={() => handleClose("lineNeg")}
+            className={Styles.sampleColor}
+            style={{
+              background: check("colorPositive"),
+            }}
           />
-          <SketchPicker color={line.lineNeg} onChange={handleP} />{" "}
-        </div>
-      ) : null}
+        </button>
+        <button
+          onClick={() =>
+            setShow({
+              visible: true,
+              current: "lineColor",
+              target: "lineColor",
+            })
+          }
+        >
+          {" "}
+          Negative
+          <div
+            className={Styles.sampleColor}
+            style={{ background: check("colorNegative") }}
+          />
+        </button>
+
+        {show.visible ? (
+          <div className={Styles.pop}>
+            <div
+              className={Styles.cover}
+              onClick={() => handleClose(show.current, show.target)}
+            />
+            <SketchPicker color={line.lineNeg} onChange={handleP} />{" "}
+          </div>
+        ) : null}
+      </div>
+      <button className={Styles.setAll}>Apply</button>
     </div>
   )
 }

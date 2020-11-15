@@ -7,7 +7,7 @@ import Gear from "../images/gear.svg"
 import Custom from "./chartcomponents/ChartCustom"
 const Chart = ({ chartData, handleTime, time, text }) => {
   const chartRef = useRef()
-  const { line } = useContext(CurrencyContext)
+  const { line, userSettings, storedSettings } = useContext(CurrencyContext)
   const { days, mainInfo } = chartData
   const { daysLength, setDaysLength } = useState("24")
   const [customValue, setCustomValue] = useState("")
@@ -51,7 +51,7 @@ const Chart = ({ chartData, handleTime, time, text }) => {
   //   },
   //   options: { ...historyOptions },
   // }
-
+  console.log(storedSettings.lineInfo.colorPositive)
   useEffect(() => {
     if (chartRef && chartRef.current) {
       const ctx = chartRef.current.getContext("2d")
@@ -81,7 +81,10 @@ const Chart = ({ chartData, handleTime, time, text }) => {
               data: days,
               //backgroundColor: gradient,
               backgroundColor: pChange < 0 ? gradient : gradient2,
-              borderColor: pChange < 0 ? line.linePlus : line.lineNeg,
+              borderColor:
+                pChange < 0
+                  ? storedSettings.lineInfo.colorNegative
+                  : storedSettings.lineInfo.colorPositive,
               pointRadius: 0,
             },
           ],
@@ -97,7 +100,7 @@ const Chart = ({ chartData, handleTime, time, text }) => {
       // setBG(gradient)
       // console.log(gradient)
     }
-  }, [chartData, line])
+  }, [chartData, line, storedSettings])
 
   // useEffect(() => {
   //   const ctx = chartRef.current.getContext("2d")
