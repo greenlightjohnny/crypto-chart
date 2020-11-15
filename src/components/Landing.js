@@ -6,6 +6,7 @@ import Doughnut from "./landingcomponents/LandingDoughnut"
 import Button from "../utils/Button"
 import AnchorButton from "../utils/AnchorButton"
 import ChartSelect from "./landingcomponents/ChartSelect"
+import Share from "./landingcomponents/Share"
 const Landing = () => {
   return (
     <>
@@ -50,6 +51,7 @@ const Landing = () => {
         </div>
       </section>
       <Community />
+      <Share />
       <ChartSelect />
     </>
   )

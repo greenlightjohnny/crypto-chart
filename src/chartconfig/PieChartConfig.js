@@ -3,7 +3,7 @@ export const historyOptions = {
   title: {
     display: true,
     fontSize: "20",
-    text: "Track Data",
+    text: "Current Holdings",
   },
   legend: {
     fontSize: "20",

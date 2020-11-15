@@ -16,8 +16,8 @@ export const CurrencyContextProvider = (props) => {
   })
   const [userSettings, setUserSettings] = useState({
     lineInfo: {
-      colorPositive: "green",
-      colorNegative: "yellow",
+      colorPositive: "#e237e5",
+      colorNegative: "#0ee9d8",
     },
     currencyInfo: {
       display: true,
