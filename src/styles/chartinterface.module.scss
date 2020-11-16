@@ -1,0 +1,88 @@
+.interface {
+  min-height: 20vh;
+  //background-color: rgb(227, 255, 247);
+  min-height: 30vh;
+  background-color: #1f253d;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.gridContainer {
+  display: grid;
+  //grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  //grid-template-rows: 1fr;
+  grid-template-rows: auto;
+  gap: 14px 12px;
+  //grid-template-areas: "coinName highs market holdings end";
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.gridContainer > div {
+  //padding: 9px;
+
+  background-color: #394264;
+  border-radius: 5px;
+  padding-bottom: 5px;
+
+  h4 {
+    color: #fff;
+    text-align: center;
+    padding-bottom: 4px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+.blurb {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+  border-top: solid #1f253d;
+  //margin-bottom: 8px;
+  padding: 0 9px 0 9px;
+  transition: all ease-in-out 0.2s;
+
+  h4 {
+    padding-bottom: 4px;
+  }
+
+  p {
+    display: inline-block;
+    color: rgb(221, 217, 217);
+    margin-right: 8px;
+    padding: 7px 0 7px 0;
+    //padding: 3px;
+  }
+  .blurbHigh {
+    color: #fff;
+  }
+  &:first-child {
+    margin-right: 9px;
+  }
+
+  &:hover {
+    background-color: slateblue;
+  }
+}
+
+// .coinName {
+//   grid-area: coinName;
+// }
+
+// .highs {
+//   grid-area: highs;
+// }
+
+// .market {
+//   grid-area: market;
+// }
+
+// .holdings {
+//   grid-area: holdings;
+// }
+// .end {
+//   grid-area: end;
+// }

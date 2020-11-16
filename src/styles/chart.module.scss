@@ -20,18 +20,22 @@
 
   button {
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     padding: 4px 12px;
     //background-color: rgb(122, 208, 209);
     background-color: transparent;
-    color: black;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    color: #625e5e;
+    //box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     margin-left: 0;
     transition: all ease-in-out 0.3s;
     font-size: 0.8rem;
+    border: 1px solid #030303;
+    margin-right: 5px;
+    font-weight: 300;
 
     &:hover {
-      background-color: rgb(153, 233, 233);
+      //background-color: rgb(153, 233, 233);
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     }
   }
 
@@ -42,8 +46,10 @@
 
   .active {
     //background-color: //rgb(173, 243, 255);
-    background-color: rgb(204, 239, 245);
+    //background-color: rgb(204, 239, 245);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    color: black;
+    font-weight: bold;
   }
 }
 
@@ -92,6 +98,7 @@
 .topFlex {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: -20px;
 
   & > div {
     flex: 1;
@@ -138,4 +145,8 @@
   margin-left: auto;
   display: flex;
   flex-direction: row;
+}
+
+.sqWrapper {
+  display: grid;
 }

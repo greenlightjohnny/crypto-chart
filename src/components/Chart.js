@@ -4,9 +4,11 @@ import Styles from "../styles/chart.module.scss"
 import { historyOptions } from "../chartconfig/chartconfig"
 import { CurrencyContext } from "../context/currencyContext"
 import Gear from "../images/gear.svg"
+import { SendMe } from "../chartconfig/chartconfig"
 import Down from "../images/download.svg"
 import Download from "./chartcomponents/Download"
 import Custom from "./chartcomponents/ChartCustom"
+import Interface from "./chartcomponents/ChartInterface"
 const Chart = ({ chartData, handleTime, time, text }) => {
   const chartRef = useRef()
   const { line, userSettings, storedSettings } = useContext(CurrencyContext)
@@ -33,7 +35,7 @@ const Chart = ({ chartData, handleTime, time, text }) => {
   // gradient.addColorStop(1, "rgba(250,174,50,0)")
 
   //console.log(mainInfo)
-
+  //console.log(historyOptions())
   let priceDifference
 
   let coinName
@@ -41,6 +43,7 @@ const Chart = ({ chartData, handleTime, time, text }) => {
   let pChange
   let gradient
   let gradient2
+  let coinPrice
   // let cOptions = {
   //   type: "line",
   //   data: {
@@ -59,7 +62,6 @@ const Chart = ({ chartData, handleTime, time, text }) => {
   // }
   //console.log(storedSettings.lineInfo.colorPositive)
 
-  console.log(storedSettings)
   useEffect(() => {
     if (chartRef && chartRef.current) {
       const ctx = chartRef.current.getContext("2d")
@@ -75,7 +77,7 @@ const Chart = ({ chartData, handleTime, time, text }) => {
       gradient2.addColorStop(1, "rgba(0, 255, 34, 0)")
       if (chartData.mainInfo !== undefined) {
         coinName = mainInfo.name
-
+        coinPrice = chartData.mainInfo.current_price
         pChange = mainInfo.price_change_24h
         const oldPrice = chartData.days[0].y
         const currentPrice = chartData.mainInfo.current_price
@@ -90,7 +92,9 @@ const Chart = ({ chartData, handleTime, time, text }) => {
         data: {
           datasets: [
             {
-              label: `${coinName} price`,
+              // label: `${coinName} price`,
+              // fontSize: 20,
+              // fontColor: "#000",
               data: days,
 
               //backgroundColor: gradient,
@@ -103,7 +107,9 @@ const Chart = ({ chartData, handleTime, time, text }) => {
             },
           ],
         },
-        options: { ...historyOptions },
+        options: {
+          ...SendMe(coinName, "#000", coinPrice),
+        },
       })
       // const ctx = chartRef.current.getContext("2d")
       // gradient = ctx.createLinearGradient(0, 0, 0, 450)
@@ -169,68 +175,70 @@ const Chart = ({ chartData, handleTime, time, text }) => {
         <>
           <div className={Styles.flexTitle}>
             <img src={mainInfo.image} alt={mainInfo.name} />
-            <h4>{mainInfo.name}</h4>
+            {/* <h4>{mainInfo.name}</h4> */}
           </div>
           <div>
-            <p className={Styles.price}>
+            {/* <p className={Styles.price}>
               Current Price: ${mainInfo.current_price}
-            </p>
-            <p style={colors}>
+            </p> */}
+            {/* <p style={colors}>
               {time} Day Change: ${priceNow}
-            </p>
+            </p> */}
           </div>
         </>
       )
     }
   }
   return (
-    <div className={Styles.wrapper}>
-      <div className={Styles.topFlex}>{renderPrice()}</div>
-      <div className={Styles.chartSize}>
-        <canvas ref={chartRef} id="myChart" height={400} width={600} />
-      </div>
-      <div className={Styles.setDays}>
-        {buttonList.map((i) => {
-          if (i.text === "Submit") {
-            return (
-              <form
-                key={i.text}
-                className={Styles.custom}
-                onSubmit={handleSubmit}
-              >
-                <label htmlFor="custom"></label>
-                <input
-                  className={
-                    text === i.text ? Styles.inputActive : Styles.inputSilent
-                  }
-                  name="custom"
-                  type="text"
-                  placeholder="Days"
-                  value={customValue}
-                  onChange={handleChange}
-                />
+    <>
+      <div className={Styles.wrapper}>
+        {/* <div className={Styles.topFlex}>{renderPrice()}</div> */}
+        <div className={Styles.chartSize}>
+          <canvas ref={chartRef} id="myChart" height={400} width={600} />
+        </div>
 
-                <button
-                  className={text === i.text ? Styles.active : ""}
-                  type="submit"
+        <div className={Styles.setDays}>
+          {buttonList.map((i) => {
+            if (i.text === "Submit") {
+              return (
+                <form
+                  key={i.text}
+                  className={Styles.custom}
+                  onSubmit={handleSubmit}
                 >
-                  Submit
+                  <label htmlFor="custom"></label>
+                  <input
+                    className={
+                      text === i.text ? Styles.inputActive : Styles.inputSilent
+                    }
+                    name="custom"
+                    type="text"
+                    placeholder="Days"
+                    value={customValue}
+                    onChange={handleChange}
+                  />
+
+                  <button
+                    className={text === i.text ? Styles.active : ""}
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                </form>
+              )
+            } else {
+              return (
+                <button
+                  key={i.text}
+                  className={text === i.text ? Styles.active : ""}
+                  onClick={() => handleTime(i)}
+                >
+                  {i.text}
                 </button>
-              </form>
-            )
-          } else {
-            return (
-              <button
-                key={i.text}
-                className={text === i.text ? Styles.active : ""}
-                onClick={() => handleTime(i)}
-              >
-                {i.text}
-              </button>
-            )
-          }
-        })}
-        {/* <form className={Styles.custom} onSubmit={handleSubmit}>
+              )
+            }
+          })}
+          {/* <form className={Styles.custom} onSubmit={handleSubmit}>
           <label for="custom"></label>
           <input
             name="custom"
@@ -242,38 +250,40 @@ const Chart = ({ chartData, handleTime, time, text }) => {
 
           <button type="submit">Submit</button>
         </form> */}
-        {/* <button onClick={() => handleTime(1)}>24H</button>
+          {/* <button onClick={() => handleTime(1)}>24H</button>
         <button onClick={() => handleTime(7)}>1W</button>
         <button onClick={() => handleTime(30)}>1M</button>
         <button onClick={() => handleTime(180)}>6M</button>
         <button onClick={() => handleTime(365)}>1Y</button> */}
-      </div>
-      <div className={Styles.optionsCon}>
-        <div className={Styles.customCon}>
-          <button className={Styles.conBtn} onClick={toggleDownload}>
-            {" "}
-            <img src={Down} alt="Download Icon"></img>
-            <span>Download</span>
-          </button>
-          {isDownload ? (
-            <Download
-              open={isDownload}
-              handleDownload={handleDownload}
-              exit={toggleDownload}
-            />
-          ) : null}
         </div>
+        <div className={Styles.optionsCon}>
+          <div className={Styles.customCon}>
+            <button className={Styles.conBtn} onClick={toggleDownload}>
+              {" "}
+              <img src={Down} alt="Download Icon"></img>
+              <span>Download</span>
+            </button>
+            {isDownload ? (
+              <Download
+                open={isDownload}
+                handleDownload={handleDownload}
+                exit={toggleDownload}
+              />
+            ) : null}
+          </div>
 
-        <div className={Styles.customCon}>
-          <button className={Styles.conBtn} onClick={toggleModal}>
-            {" "}
-            <img src={Gear} alt="Settings Icon"></img>
-            <span>Settings</span>
-          </button>
-          {isOpen ? <Custom open={isOpen} exit={toggleModal} /> : null}
+          <div className={Styles.customCon}>
+            <button className={Styles.conBtn} onClick={toggleModal}>
+              {" "}
+              <img src={Gear} alt="Settings Icon"></img>
+              <span>Settings</span>
+            </button>
+            {isOpen ? <Custom open={isOpen} exit={toggleModal} /> : null}
+          </div>
         </div>
       </div>
-    </div>
+      <Interface />
+    </>
   )
 }
 
