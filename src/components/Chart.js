@@ -63,15 +63,15 @@ const Chart = ({ chartData, handleTime, time, text }) => {
   useEffect(() => {
     if (chartRef && chartRef.current) {
       const ctx = chartRef.current.getContext("2d")
-      gradient = ctx.createLinearGradient(0, 0, 0, 950)
-      gradient2 = ctx.createLinearGradient(0, 0, 0, 950)
+      gradient = ctx.createLinearGradient(0, 0, 0, 1550)
+      gradient2 = ctx.createLinearGradient(0, 0, 0, 1550)
 
-      gradient.addColorStop(0, "rgba(255, 0,0, 0.3)")
-      gradient.addColorStop(0.4, "rgba(255, 0, 0, 0.5)")
+      gradient.addColorStop(0, "rgba(255, 0,0, 0.6)")
+      gradient.addColorStop(0.4, "rgba(255, 0, 0, 0.4)")
       gradient.addColorStop(1, "rgba(255, 0, 0, 0)")
 
-      gradient2.addColorStop(0, "rgba(0, 255, 34, 0.3)")
-      gradient2.addColorStop(0.3, "rgba(0, 255, 34, 0.4)")
+      gradient2.addColorStop(0, "rgba(0, 255, 34, 0.6)")
+      gradient2.addColorStop(0.2, "rgba(0, 255, 34, 0.4)")
       gradient2.addColorStop(1, "rgba(0, 255, 34, 0)")
       if (chartData.mainInfo !== undefined) {
         coinName = mainInfo.name

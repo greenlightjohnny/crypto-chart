@@ -7,6 +7,7 @@ import Button from "../utils/Button"
 import AnchorButton from "../utils/AnchorButton"
 import ChartSelect from "./landingcomponents/ChartSelect"
 import Share from "./landingcomponents/Share"
+import AboutShort from "./landingcomponents/AboutShort"
 const Landing = () => {
   return (
     <>
@@ -52,6 +53,7 @@ const Landing = () => {
       </section>
       <Community />
       <Share />
+      <AboutShort />
       <ChartSelect />
     </>
   )
