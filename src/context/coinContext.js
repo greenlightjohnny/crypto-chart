@@ -3,18 +3,18 @@ import React, { createContext, useEffect, useState } from "react"
 export const CoinContext = createContext()
 
 export const CoinContextProvider = (props) => {
-  const [coinCurrent, setCoinCurrent] = useState("Good morning")
+  const [coinCurrent, setCoinCurrent] = useState({ currentCoin: false })
   const [widgetMap, setWidgetMap] = useState([
     {
-      overview: [
-        "Overview",
+      title: "Overview",
+      widge: [
         { name: "Coin", value: "name" },
         { name: "Price", value: "current_price" },
       ],
     },
     {
-      market: [
-        "Market",
+      title: "Overview",
+      widge: [
         { name: "Total Supply:", value: "total_supply" },
         { name: "Total Volume:", value: "total_volume" },
         { name: "Market Cap Rank:", value: "market_cap_rank" },
@@ -22,8 +22,8 @@ export const CoinContextProvider = (props) => {
       ],
     },
     {
-      alltime: [
-        "All Time",
+      title: "All Time",
+      widge: [
         { name: "All Time High:", value: "ath" },
         { name: "ATH Date:", value: "ath_date" },
         { name: "All Time Low:", value: "atl" },
@@ -33,8 +33,8 @@ export const CoinContextProvider = (props) => {
       ],
     },
     {
-      alltime: [
-        "All2",
+      title: "All2",
+      widge: [
         { name: "All Time High:", value: "ath" },
         { name: "ATH Date:", value: "ath_date" },
         { name: "All Time Low:", value: "atl" },
@@ -44,8 +44,8 @@ export const CoinContextProvider = (props) => {
       ],
     },
     {
-      alltime: [
-        "All3",
+      title: "All3",
+      widge: [
         { name: "All Time High:", value: "ath" },
         { name: "ATH Date:", value: "ath_date" },
         { name: "All Time Low:", value: "atl" },
@@ -61,6 +61,8 @@ export const CoinContextProvider = (props) => {
       value={{
         coinCurrent,
         setCoinCurrent,
+        widgetMap,
+        setWidgetMap,
       }}
     >
       {props.children}
