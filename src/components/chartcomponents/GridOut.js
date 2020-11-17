@@ -31,7 +31,7 @@ const GridOut = () => {
                 <h4>{item.content.title}</h4>
                 {item.content.fields.map((i) => {
                   return (
-                    <div className={Styles.blurb}>
+                    <div key={i.title} className={Styles.blurb}>
                       <p>{i.title}</p>
                       <p className={Styles.blurbHigh}>{i.value}</p>
                     </div>

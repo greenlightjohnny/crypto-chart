@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, useContext } from "react"
 import { useParams } from "react-router-dom"
 import Chart from "../components/Chart"
 import Details from "../components/Details"
 import Styles from "../styles/coininfo.module.scss"
 import gecko from "../apis/gecko"
-
+import { CoinContext } from "../context/coinContext"
+import NewGrid from "../components/newgrid/NewGrid"
 function CoinInfo() {
   const { name } = useParams()
   const [coinData, setCoinData] = useState({})
   const [time, setTime] = useState(1)
   const [text, setText] = useState("1D")
   const [isLoading, setIsLoading] = useState(false)
+  const { coinCurrent, setCoinCurrent } = useContext(CoinContext)
 
   const chartFormat = (data) => {
     return data.map((i) => {
@@ -50,6 +52,10 @@ function CoinInfo() {
           }),
         ])
         //console.log(mainInfo)
+        setCoinCurrent({
+          days: chartFormat(days.data.prices),
+          mainInfo: mainInfo.data[0],
+        })
         setCoinData({
           days: chartFormat(days.data.prices),
           mainInfo: mainInfo.data[0],
@@ -82,7 +88,8 @@ function CoinInfo() {
               text={text}
               handleTime={handleTime}
             />
-            <Details data={coinData} />
+            {/* <Details data={coinData} /> */}
+            <NewGrid />
           </div>
         </div>
       )

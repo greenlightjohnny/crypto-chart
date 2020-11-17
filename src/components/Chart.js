@@ -282,7 +282,7 @@ const Chart = ({ chartData, handleTime, time, text }) => {
           </div>
         </div>
       </div>
-      <Interface />
+      {/* <Interface /> */}
     </>
   )
 }

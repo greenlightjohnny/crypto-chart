@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useContext } from "react"
 import _ from "lodash"
 //import RGL, { WidthProvider } from "react-grid-layout"
 import Styles from "../../styles/newgrid.module.scss"
@@ -7,9 +7,16 @@ import "../../../node_modules/react-grid-layout/css/styles.css"
 import "../../../node_modules/react-resizable/css/styles.css"
 import { Responsive, WidthProvider } from "react-grid-layout"
 import { Data } from "./NewData"
-const ResponsiveGridLayout = WidthProvider(Responsive)
 
+import { CoinContext } from "../../context/coinContext"
+const ResponsiveGridLayout = WidthProvider(Responsive)
 class MyResponsiveGrid extends React.Component {
+  static contextType = CoinContext
+
+  componentDidMount() {
+    const coinC = this.context
+    console.log(coinC)
+  }
   render() {
     // {lg: layout1, md: layout2, ...}
     const layouts = {
@@ -64,7 +71,7 @@ class MyResponsiveGrid extends React.Component {
                 <h4>{item.content.title}</h4>
                 {item.content.fields.map((i) => {
                   return (
-                    <div className={Styles.blurb}>
+                    <div key={i.title} className={Styles.blurb}>
                       <p>{i.title}</p>
                       <p className={Styles.blurbHigh}>{i.value}</p>
                     </div>
