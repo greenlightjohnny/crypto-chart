@@ -1,9 +1,58 @@
 .mainNew {
   background-color: teal;
   padding-top: 4rem;
+}
 
-  .newGridFlex {
-    max-width: 1300px;
-    margin: 0 auto;
+.top {
+  background-color: #fff;
+  margin-top: 5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.yep {
+  border: 1px solid blue;
+}
+
+.card {
+  background-color: #394264;
+  border-radius: 5px;
+  padding-bottom: 5px;
+
+  h4 {
+    color: #fff;
+    text-align: center;
+    padding-bottom: 4px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+.blurb {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+  border-top: solid #1f253d;
+  //margin-bottom: 8px;
+  padding: 0 9px 0 9px;
+  transition: all ease-in-out 0.2s;
+
+  p {
+    display: inline-block;
+    color: rgb(221, 217, 217);
+    margin-right: 8px;
+    padding: 7px 0 7px 0;
+    //padding: 3px;
+  }
+  .blurbHigh {
+    color: #fff;
+  }
+  &:first-child {
+    margin-right: 9px;
+  }
+
+  &:hover {
+    //background-color: slateblue;
   }
 }
