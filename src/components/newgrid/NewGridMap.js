@@ -3,9 +3,10 @@ import Styles from "../../styles/newgrid.module.scss"
 import "../../../node_modules/react-grid-layout/css/styles.css"
 import "../../../node_modules/react-resizable/css/styles.css"
 import { Responsive, WidthProvider } from "react-grid-layout"
+import { shortenDate, lastUpdate } from "../../utils/formatDate"
 const ResponsiveGridLayout = WidthProvider(Responsive)
 const NewGridMap = (props) => {
-  console.log(props)
+  //console.log(props)
 
   const { coinCurrent, widgetMap } = props.coins
   const layouts = {
@@ -54,17 +55,19 @@ const NewGridMap = (props) => {
       cols={{ lg: 30, md: 20, sm: 20, xs: 15, xxs: 10 }}
     >
       {widgetMap.map((item, index) => {
-        console.log(layouts.lg[index].i)
+        //console.log(item)
         return (
           <div key={layouts.lg[index].i} className={Styles.card}>
             <h4>{item.title}</h4>
 
             {item.widge.map((i) => {
+              let final = shortenDate(i.value, coinCurrent.mainInfo)
               return (
                 <div key={i.value} className={Styles.blurb}>
                   <p>{i.name}</p>
                   <p className={Styles.blurbHigh}>
-                    {coinCurrent.mainInfo[i.value]}
+                    {final}
+                    {/* {coinCurrent.mainInfo[i.value]} */}
                   </p>
                 </div>
               )
