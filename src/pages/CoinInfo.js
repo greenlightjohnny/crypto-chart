@@ -12,7 +12,7 @@ function CoinInfo() {
   const [time, setTime] = useState(1)
   const [text, setText] = useState("1D")
   const [isLoading, setIsLoading] = useState(false)
-  const { coinCurrent, setCoinCurrent } = useContext(CoinContext)
+  const { coinCurrent, setCoinCurrent, coinCurrency } = useContext(CoinContext)
 
   const chartFormat = (data) => {
     return data.map((i) => {
@@ -36,17 +36,18 @@ function CoinInfo() {
     const fetchData = async () => {
       let days
       let mainInfo
+      console.log(coinCurrency)
       try {
         ;[days, mainInfo] = await Promise.all([
           gecko.get(`/coins/${name}/market_chart`, {
             params: {
-              vs_currency: "usd",
+              vs_currency: coinCurrency,
               days: time,
             },
           }),
           gecko.get(`/coins/markets/`, {
             params: {
-              vs_currency: "usd",
+              vs_currency: coinCurrency,
               ids: name,
             },
           }),

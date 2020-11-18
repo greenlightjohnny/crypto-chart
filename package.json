@@ -11,6 +11,7 @@
     "chartjs-plugin-datalabels": "^0.7.0",
     "chartjs-plugin-deferred": "^1.0.1",
     "classnames": "^2.2.6",
+    "currency-symbol-map": "^4.0.4",
     "dayjs": "^1.9.6",
     "moment": "^2.29.1",
     "node-sass": "4.14.1",

@@ -15,9 +15,12 @@ export const shortenDate = (checkMe, data) => {
   ) {
     let oldDate2 = data[checkMe]
     if (data[checkMe] > 0) {
+      let isC
+      if (checkMe === "price_change_24h") {
+        isC = data.currency
+      }
       return (
         <span style={{ color: "green" }}>
-          {" "}
           {checkMe > 100000
             ? numAbbr.abbreviate([oldDate2], [2])
             : new Intl.NumberFormat().format(oldDate2)}
@@ -27,6 +30,7 @@ export const shortenDate = (checkMe, data) => {
       return <span style={{ color: "red" }}>{oldDate2}</span>
     }
   } else {
+    //console.log(data)
     let data3 = data[checkMe]
     if (!isNaN(data3)) {
       return (

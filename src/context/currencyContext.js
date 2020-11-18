@@ -10,6 +10,7 @@ export const CurrencyContextProvider = (props) => {
     "litecoin",
     "dash",
   ])
+
   const [line, setLine] = useState({
     linePlus: "blue",
     lineNeg: "red",

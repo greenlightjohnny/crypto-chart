@@ -4,6 +4,7 @@ export const CoinContext = createContext()
 
 export const CoinContextProvider = (props) => {
   const [coinCurrent, setCoinCurrent] = useState({ currentCoin: false })
+  const [coinCurrency, setCoinCurrency] = useState("eur")
   const [widgetMap, setWidgetMap] = useState([
     {
       title: "Overview",
@@ -11,8 +12,8 @@ export const CoinContextProvider = (props) => {
         { name: "Coin", value: "name" },
         { name: "Symbol", value: "symbol" },
         { name: "Price", value: "current_price" },
-        { name: "24H $", value: "price_change_24h" },
-        { name: "24H %", value: "price_change_percentage_24h" },
+        { name: "24H", value: "price_change_24h" },
+        { name: "24H", value: "price_change_percentage_24h" },
       ],
     },
     {
@@ -37,7 +38,7 @@ export const CoinContextProvider = (props) => {
       ],
     },
     {
-      title: "All2",
+      title: "Holdings",
       widge: [
         { name: "ATH:", value: "ath" },
         { name: "ATHD:", value: "ath_date" },
@@ -48,7 +49,7 @@ export const CoinContextProvider = (props) => {
       ],
     },
     {
-      title: "All3",
+      title: "Compare",
       widge: [
         { name: "ATH:", value: "ath" },
         { name: "ATHD:", value: "ath_date" },
@@ -67,6 +68,7 @@ export const CoinContextProvider = (props) => {
         setCoinCurrent,
         widgetMap,
         setWidgetMap,
+        coinCurrency,
       }}
     >
       {props.children}

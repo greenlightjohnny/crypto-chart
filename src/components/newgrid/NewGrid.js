@@ -14,15 +14,15 @@ const ResponsiveGridLayout = WidthProvider(Responsive)
 const MyResponsiveGrid = () => {
   const { coinCurrent, widgetMap, setCoinCurrent } = useContext(CoinContext)
   //const [] = useState()
-  console.log(coinCurrent, widgetMap)
-  console.log(CoinContext)
+  //console.log(coinCurrent, widgetMap)
+  //console.log(CoinContext)
   const [oldInfo, setOldInfo] = useState(false)
 
   useEffect(() => {
     setOldInfo({ coinCurrent, widgetMap })
-    console.log(coinCurrent)
+    //console.log(coinCurrent)
   }, [coinCurrent])
-  console.log(oldInfo)
+  //console.log(oldInfo)
 
   let testCase = oldInfo
   return (

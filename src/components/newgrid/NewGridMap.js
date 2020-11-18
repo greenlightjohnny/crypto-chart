@@ -1,12 +1,15 @@
-import React from "react"
+import React, { useContext } from "react"
 import Styles from "../../styles/newgrid.module.scss"
 import "../../../node_modules/react-grid-layout/css/styles.css"
 import "../../../node_modules/react-resizable/css/styles.css"
 import { Responsive, WidthProvider } from "react-grid-layout"
 import { shortenDate, lastUpdate } from "../../utils/formatDate"
+import { currencySymbol } from "./../../utils/currencySymbol"
+import { CoinContext } from "./../../context/coinContext"
 const ResponsiveGridLayout = WidthProvider(Responsive)
 const NewGridMap = (props) => {
   //console.log(props)
+  const { coinCurrency } = useContext(CoinContext)
 
   const { coinCurrent, widgetMap } = props.coins
   const layouts = {
@@ -66,6 +69,7 @@ const NewGridMap = (props) => {
                 <div key={i.value} className={Styles.blurb}>
                   <p>{i.name}</p>
                   <p className={Styles.blurbHigh}>
+                    {currencySymbol(i.value, coinCurrency)}
                     {final}
                     {/* {coinCurrent.mainInfo[i.value]} */}
                   </p>
