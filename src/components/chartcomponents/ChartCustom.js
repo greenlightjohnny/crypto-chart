@@ -4,9 +4,8 @@ import { CurrencyContext } from "../../context/currencyContext"
 import { SketchPicker, ChromePicker } from "react-color"
 import cx from "classnames"
 import { useTransition, useSpring, animated } from "react-spring"
-import Background from "./background"
-import Grid from "./Grid"
-import ColorPicker from "./Line"
+
+import ColorPicker from "./downloadComponents/Line"
 import Button from "../../utils/Button"
 
 const ChartCustom = ({ exit }) => {
@@ -46,8 +45,6 @@ const ChartCustom = ({ exit }) => {
 
     if (value[0].name === "Background") {
       return <Background exit={exit} />
-    } else if (value[0].name === "Grid") {
-      return <Grid exit={exit} />
     } else if (value[0].name === "Line") {
       return <ColorPicker exit={exit} />
     } else {

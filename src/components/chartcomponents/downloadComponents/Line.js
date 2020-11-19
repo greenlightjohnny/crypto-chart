@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react"
-import Styles from "../../styles/item.module.scss"
-import { CurrencyContext } from "../../context/currencyContext"
+import Styles from "../../../styles/item.module.scss"
+import { CurrencyContext } from "../../../context/currencyContext"
 import { SketchPicker, ChromePicker } from "react-color"
-import Button from "../../utils/Button"
+import Button from "../../../utils/Button"
 const Line = ({ exit }) => {
   //console.log(exit)
   const {

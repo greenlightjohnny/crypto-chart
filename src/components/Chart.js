@@ -3,13 +3,11 @@ import ChartJS from "chart.js"
 import Styles from "../styles/chart.module.scss"
 import { historyOptions } from "../chartconfig/chartconfig"
 import { CurrencyContext } from "../context/currencyContext"
-import Gear from "../images/gear.svg"
+import DownloadComponent from "./chartcomponents/downloadComponents/DownloadComponent"
 import { SendMe } from "../chartconfig/chartconfig"
-import Down from "../images/download.svg"
-import Download from "./chartcomponents/Download"
-import Custom from "./chartcomponents/ChartCustom"
+
 import GetDays from "./chartcomponents/getDays"
-import Interface from "./chartcomponents/ChartInterface"
+
 const Chart = ({ chartData, handleTime, time, text }) => {
   const chartRef = useRef()
   const { line, userSettings, storedSettings } = useContext(CurrencyContext)
@@ -19,16 +17,6 @@ const Chart = ({ chartData, handleTime, time, text }) => {
   const [isDownload, setIsDownload] = useState(false)
   const [priceNow, setPriceNow] = useState("")
 
-  // console.log(chartData)
-  //console.log(main.name)
-  //let coinName = main.name || "coin"
-  //console.log(coinName)
-  // let gradient = chartRef.createLinearGradient(0, 0, 0, 400)
-  // gradient.addColorStop(0, "rgba(250,174,50,1)")
-  // gradient.addColorStop(1, "rgba(250,174,50,0)")
-
-  //console.log(mainInfo)
-  //console.log(historyOptions())
   let priceDifference
 
   let coinName
@@ -38,22 +26,6 @@ const Chart = ({ chartData, handleTime, time, text }) => {
   let gradient2
   let coinPrice
   // let cOptions = {
-  //   type: "line",
-  //   data: {
-  //     datasets: [
-  //       {
-  //         label: `${coinName} price`,
-  //         data: days,
-  //         //backgroundColor: gradient,
-  //         backgroundColor: pChange < 0 ? gradient : gradient2,
-  //         borderColor: "rgb(250, 73, 73)",
-  //         pointRadius: 0,
-  //       },
-  //     ],
-  //   },
-  //   options: { ...historyOptions },
-  // }
-  //console.log(storedSettings.lineInfo.colorPositive)
 
   useEffect(() => {
     if (chartRef && chartRef.current) {
@@ -144,34 +116,34 @@ const Chart = ({ chartData, handleTime, time, text }) => {
     document.body.removeChild(tagA)
   }
 
-  const renderPrice = () => {
-    let colors = ""
+  // const renderPrice = () => {
+  //   let colors = ""
 
-    if (mainInfo) {
-      if (priceNow > 0) {
-        colors = { color: "green" }
-      } else {
-        colors = { color: "red" }
-      }
+  //   if (mainInfo) {
+  //     if (priceNow > 0) {
+  //       colors = { color: "green" }
+  //     } else {
+  //       colors = { color: "red" }
+  //     }
 
-      return (
-        <>
-          <div className={Styles.flexTitle}>
-            <img src={mainInfo.image} alt={mainInfo.name} />
-            {/* <h4>{mainInfo.name}</h4> */}
-          </div>
-          <div>
-            {/* <p className={Styles.price}>
-              Current Price: ${mainInfo.current_price}
-            </p> */}
-            {/* <p style={colors}>
-              {time} Day Change: ${priceNow}
-            </p> */}
-          </div>
-        </>
-      )
-    }
-  }
+  //     return (
+  //       <>
+  //         <div className={Styles.flexTitle}>
+  //           <img src={mainInfo.image} alt={mainInfo.name} />
+  //           {/* <h4>{mainInfo.name}</h4> */}
+  //         </div>
+  //         <div>
+  //           {/* <p className={Styles.price}>
+  //             Current Price: ${mainInfo.current_price}
+  //           </p> */}
+  //           {/* <p style={colors}>
+  //             {time} Day Change: ${priceNow}
+  //           </p> */}
+  //         </div>
+  //       </>
+  //     )
+  //   }
+  // }
   return (
     <>
       <div className={Styles.wrapper}>
@@ -182,31 +154,13 @@ const Chart = ({ chartData, handleTime, time, text }) => {
 
         <GetDays handleTime={handleTime} text={text} />
 
-        <div className={Styles.optionsCon}>
-          <div className={Styles.customCon}>
-            <button className={Styles.conBtn} onClick={toggleDownload}>
-              {" "}
-              <img src={Down} alt="Download Icon"></img>
-              <span>Download</span>
-            </button>
-            {isDownload ? (
-              <Download
-                open={isDownload}
-                handleDownload={handleDownload}
-                exit={toggleDownload}
-              />
-            ) : null}
-          </div>
-
-          <div className={Styles.customCon}>
-            <button className={Styles.conBtn} onClick={toggleModal}>
-              {" "}
-              <img src={Gear} alt="Settings Icon"></img>
-              <span>Settings</span>
-            </button>
-            {isOpen ? <Custom open={isOpen} exit={toggleModal} /> : null}
-          </div>
-        </div>
+        <DownloadComponent
+          toggleModal={toggleModal}
+          toggleDownload={toggleDownload}
+          handleDownload={handleDownload}
+          isDownload={isDownload}
+          isOpen={isOpen}
+        />
       </div>
       {/* <Interface /> */}
     </>

@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { useTransition, useSpring, animated } from "react-spring"
-import Styles from "../../styles/chartcustom.module.scss"
-import DownloadImage from "./downloadComponents/DownloadModule"
-import DownloadData from "./downloadComponents/DownloadData"
+import Styles from "../../../styles/chartcustom.module.scss"
+import DownloadImage from "./DownloadModule"
+import DownloadData from "./DownloadData"
 const Download = ({ handleDownload, exit }) => {
   const [settingList, setSettingList] = useState([
     { name: "Image", active: true },
