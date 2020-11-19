@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import Styles from "../styles/header.module.scss"
 import Logo from "../images/ablogo.svg"
 import AuthSwitch from "./AuthSwitch"
+import Switch from "../utils/Switch"
 const Header = () => {
   return (
     <div className={Styles.main}>
@@ -12,6 +13,7 @@ const Header = () => {
             <img src={Logo} alt="Abstract logo" />
           </div>
         </Link>
+        <Switch />
         <AuthSwitch />
       </nav>
     </div>

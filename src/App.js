@@ -1,4 +1,4 @@
-import "./App.css"
+import "./App.scss"
 import { BrowserRouter, Route } from "react-router-dom"
 import Info from "./pages/Info"
 import Summary from "./pages/home"

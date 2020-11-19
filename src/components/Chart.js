@@ -8,24 +8,17 @@ import { SendMe } from "../chartconfig/chartconfig"
 import Down from "../images/download.svg"
 import Download from "./chartcomponents/Download"
 import Custom from "./chartcomponents/ChartCustom"
+import GetDays from "./chartcomponents/getDays"
 import Interface from "./chartcomponents/ChartInterface"
 const Chart = ({ chartData, handleTime, time, text }) => {
   const chartRef = useRef()
   const { line, userSettings, storedSettings } = useContext(CurrencyContext)
   const { days, mainInfo } = chartData
-  const { daysLength, setDaysLength } = useState("24")
-  const [customValue, setCustomValue] = useState("")
+
   const [isOpen, setIsOpen] = useState(false)
   const [isDownload, setIsDownload] = useState(false)
   const [priceNow, setPriceNow] = useState("")
-  const [buttonList, setButtonList] = useState([
-    { time: 1, text: "1D" },
-    { time: 7, text: "1W" },
-    { time: 30, text: "1M" },
-    { time: 180, text: "6M" },
-    { time: 365, text: "1Y" },
-    { time: 999, text: "Submit" },
-  ])
+
   // console.log(chartData)
   //console.log(main.name)
   //let coinName = main.name || "coin"
@@ -131,10 +124,6 @@ const Chart = ({ chartData, handleTime, time, text }) => {
 
   // },[bg])
 
-  const handleChange = (e) => {
-    setCustomValue(e.target.value)
-  }
-
   const toggleModal = () => {
     let current = isOpen
     setIsOpen(!current)
@@ -142,12 +131,6 @@ const Chart = ({ chartData, handleTime, time, text }) => {
   const toggleDownload = () => {
     let current = isDownload
     setIsDownload(!current)
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    let tak = { time: customValue, text: "Submit" }
-    handleTime(tak)
   }
 
   const handleDownload = (e) => {
@@ -197,65 +180,8 @@ const Chart = ({ chartData, handleTime, time, text }) => {
           <canvas ref={chartRef} id="myChart" height={400} width={600} />
         </div>
 
-        <div className={Styles.setDays}>
-          {buttonList.map((i) => {
-            if (i.text === "Submit") {
-              return (
-                <form
-                  key={i.text}
-                  className={Styles.custom}
-                  onSubmit={handleSubmit}
-                >
-                  <label htmlFor="custom"></label>
-                  <input
-                    className={
-                      text === i.text ? Styles.inputActive : Styles.inputSilent
-                    }
-                    name="custom"
-                    type="text"
-                    placeholder="Days"
-                    value={customValue}
-                    onChange={handleChange}
-                  />
+        <GetDays handleTime={handleTime} text={text} />
 
-                  <button
-                    className={text === i.text ? Styles.active : ""}
-                    type="submit"
-                  >
-                    Submit
-                  </button>
-                </form>
-              )
-            } else {
-              return (
-                <button
-                  key={i.text}
-                  className={text === i.text ? Styles.active : ""}
-                  onClick={() => handleTime(i)}
-                >
-                  {i.text}
-                </button>
-              )
-            }
-          })}
-          {/* <form className={Styles.custom} onSubmit={handleSubmit}>
-          <label for="custom"></label>
-          <input
-            name="custom"
-            type="text"
-            placeholder="Days"
-            value={customValue}
-            onChange={handleChange}
-          />
-
-          <button type="submit">Submit</button>
-        </form> */}
-          {/* <button onClick={() => handleTime(1)}>24H</button>
-        <button onClick={() => handleTime(7)}>1W</button>
-        <button onClick={() => handleTime(30)}>1M</button>
-        <button onClick={() => handleTime(180)}>6M</button>
-        <button onClick={() => handleTime(365)}>1Y</button> */}
-        </div>
         <div className={Styles.optionsCon}>
           <div className={Styles.customCon}>
             <button className={Styles.conBtn} onClick={toggleDownload}>
